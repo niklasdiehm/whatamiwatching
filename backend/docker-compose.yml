@@ -1,0 +1,6 @@
+services:
+  nameserver:
+    build: ./nameserver
+    container_name: nameserver
+    ports:
+      - "8761:8761"
