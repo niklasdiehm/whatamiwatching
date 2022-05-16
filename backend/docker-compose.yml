@@ -4,3 +4,10 @@ services:
     container_name: nameserver
     ports:
       - "8761:8761"
+  admin:
+    build: ./admin
+    container_name: admin
+    depends_on:
+      - "nameserver"
+    ports:
+      - "8888:8888"
