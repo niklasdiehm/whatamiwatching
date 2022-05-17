@@ -11,3 +11,11 @@ services:
       - "nameserver"
     ports:
       - "8888:8888"
+  api-gateway:
+    build: ./api-gateway
+    container_name: api-gateway
+    depends_on:
+      - "nameserver"
+      - "admin"
+    ports:
+      - "8080:8080"

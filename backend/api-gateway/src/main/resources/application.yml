@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: WAIT-GATEWAY
+  boot:
+    admin:
+      client:
+        url: http://admin:8888
+  cloud:
+    gateway:
+      routes:
+        - id: user_backend
+          uri: lb://WAIT-USER
+          predicates:
+            - Path=/api/user/**
+          filters:
+            - RewritePath=/api/user/, /
+server:
+  port: 8080
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://nameserver:8761/eureka
+    register-with-eureka: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
