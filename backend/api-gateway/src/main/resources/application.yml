@@ -9,7 +9,7 @@ spring:
     gateway:
       routes:
         - id: user_backend
-          uri: lb://WAIT-USER
+          uri: lb://WAIW-USER
           predicates:
             - Path=/api/user/**
           filters:
