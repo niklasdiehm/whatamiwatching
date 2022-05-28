@@ -3,6 +3,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import HomeScreen from "../screens/Home";
 import ExploreNavigator from "./ExploreNavigator";
 import ProfileScreen from "../screens/Profile";
+import FilmListScreen from "../screens/FilmList";
 
 import Fontisto from "react-native-vector-icons/Fontisto";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
@@ -21,7 +22,7 @@ const HomeTabNavigator = (props) => {
     >
       <Tab.Screen
         name={"MOTD"}
-        component={ExploreNavigator}
+        component={FilmListScreen}
         options={{
           tabBarIcon: ({ color }) => (
             <FontAwesome name="calendar" size={25} color={color} />
