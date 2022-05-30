@@ -5,11 +5,7 @@ import ExploreNavigator from "./ExploreNavigator";
 import ProfileScreen from "../screens/Profile";
 import FilmListScreen from "../screens/FilmList";
 
-import Fontisto from "react-native-vector-icons/Fontisto";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
-import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
-import Feather from "react-native-vector-icons/Feather";
-import EvilIcons from "react-native-vector-icons/EvilIcons";
 
 const Tab = createBottomTabNavigator();
 

@@ -1,32 +1,39 @@
 import React from 'react';
-import { FlatList, Text, View } from 'react-native';
+import { View} from 'react-native';
 import styles from './styles';
 import {ListItem} from "@rneui/themed";
+import { useNavigation } from "@react-navigation/native";
+import FontAwesome from "react-native-vector-icons/FontAwesome";
 
 const list = [
   {
-    name: 'Amy',
-    subtitle: 'Vice President'
+    filmName: 'Amy',
+    description: 'Vice President'
   },
   {
-    name: 'Chris Jackson',
-    subtitle: 'Vice Chairman'
+    filmName: 'Chris Jackson',
+    description: 'Vice Chairman'
   }
 ]
 
+
 const FilmListScreen = () => {
+  const navigation = useNavigation();
   return (
     <View style={styles.container}>
       {
         list.map((l, i) => (
-          <ListItem key={i} bottomDivider>
+          <ListItem key={i} 
+            bottomDivider
+            onPress={() => navigation.navigate("Profile")}>
             <ListItem.Content>
-              <ListItem.Title>{l.name}</ListItem.Title>
-              <ListItem.Subtitle>{l.subtitle}</ListItem.Subtitle>
+              <ListItem.Title>{l.filmName}</ListItem.Title>
+              <ListItem.Subtitle>{l.description}</ListItem.Subtitle>
             </ListItem.Content>
+            <ListItem.Chevron color="black" />
           </ListItem>
         ))
-      }
+      }   
     </View>
   );
 }
