@@ -27,4 +27,13 @@ services:
       - "admin"
       - "api-gateway"
     ports:
+      - "8081:8081"
+  movie:
+    build: ./movie
+    container_name: movie
+    depends_on:
+      - "nameserver"
+      - "admin"
+      - "api-gateway"
+    ports:
       - "8082:8082"
