@@ -3,10 +3,10 @@
 
 import axios from 'axios';
 
-export const key = 'unser Key für die Abfrage';
-
 const api = axios.create({
-    baseURL: ' URL von unserer Seite '
+    baseURL: 'localhost:8080/api'
 })
-
+/* /movie
+/user
+/movie/genres */
 export default api;
