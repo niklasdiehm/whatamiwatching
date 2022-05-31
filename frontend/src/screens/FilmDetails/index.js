@@ -3,8 +3,7 @@ import { View, Text, Image, TouchableOpacity } from "react-native";
 import styles from "./styles";
 import YoutubePlayer from 'react-native-youtube-iframe';
 import Stars from 'react-native-stars';
-import Ionicons from '@expo/vector-icons';
-
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const FilmDetailsScreen = (props) => {
     return(
@@ -12,20 +11,28 @@ const FilmDetailsScreen = (props) => {
         <YoutubePlayer
           style={styles.player}
           height={300}
-          videoId={''}
+          videoId={'o4wZ_SBom88'}
         />
-        <Stars 
-          default={2.5}
-          count={5}
+         <Stars
+          default={5.5}
+          disabled={true}
+          count={10}
           half={true}
-          starSize={20}
-
-          fullStar={ <Ionicons name="md-star" size={24} color="#E7A74E"/>}
-          emptyStar={ <Ionicons name="md-star-outline" size={24} color="#E7A74E"/>}
-          halfStar={<Ionicons name="md-star-half" size={24} color="#E7A74E"/>}
-          disable={true}
-        />
+          starSize={50} 
+          fullStar={<Icon name={'star'} size={30} style={[styles.myStarStyle]}/>}
+          emptyStar={<Icon name={'star-outline'} size={30} style={[styles.myStarStyle, styles.myEmptyStarStyle]}/>}
+          halfStar={<Icon name={'star-half'} size={30} style={[styles.myStarStyle]}/>}
+    
+  
+  />
         <Text style={styles.description}>descriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescription</Text>
+      <View style={styles.logoContainer}>
+      <Image  style={styles.logo} source={require('../../../assets/images/netflix.png')} />
+      <Image  style={styles.logo} source={require('../../../assets/images/prime.png')} />
+      <Image  style={styles.logo} source={require('../../../assets/images/apple.jpg')} />
+      <Image  style={styles.logo} source={require('../../../assets/images/sky.png')} />
+      <Image  style={styles.logo} source={require('../../../assets/images/joyn.png')} />
+      </View>
       </View>
     )
 };
