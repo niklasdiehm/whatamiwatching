@@ -6,6 +6,7 @@ const styles = StyleSheet.create({
   },
   description: {
     padding: 5,
+    fontSize: 18,
   },
 });
 
