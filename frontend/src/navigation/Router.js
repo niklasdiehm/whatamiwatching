@@ -5,6 +5,7 @@ import DestinationSearchScreen from "../screens/DestinationSearch";
 import GuestsScreen from "../screens/Guests";
 import LoginDisplay from "../screens/Login";
 import HomeTabNavigator from "./HomeTabNavigator.js";
+import FilmDetailsScreen from "../screens/FilmDetails";
 const Stack = createStackNavigator();
 
 const Router = (props) => {
@@ -40,6 +41,15 @@ const Router = (props) => {
           component={GuestsScreen}
           options={{
             title: "How many people?",
+          }}
+        />
+
+        <Stack.Screen
+          name={"FilmDetails"}
+          component={FilmDetailsScreen}
+          options={{
+            title: "FilmTitle",
+            headerBackTitle: "Back"
           }}
         />
       </Stack.Navigator>

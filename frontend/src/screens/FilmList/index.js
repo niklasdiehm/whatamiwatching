@@ -25,7 +25,7 @@ const FilmListScreen = () => {
         list.map((l, i) => (
           <ListItem key={i} 
             bottomDivider
-            onPress={() => navigation.navigate("Profile")}>
+            onPress={() => navigation.navigate("FilmDetails")}>
             <ListItem.Content>
               <ListItem.Title>{l.filmName}</ListItem.Title>
               <ListItem.Subtitle>{l.description}</ListItem.Subtitle>
