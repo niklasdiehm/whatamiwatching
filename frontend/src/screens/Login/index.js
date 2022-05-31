@@ -4,8 +4,18 @@ import { Image, Input, Button,  } from '@rneui/base';
 import { useNavigation } from "@react-navigation/native";
 import styles from "./styles";
 
+
 const LoginDisplay = (props) => {
   const navigation = useNavigation();
+
+  function login() {
+    var loggedIn = true; //Api Aufruf post --> Eingabe mitgeben
+    if(loggedIn){
+      //User setzen
+      navigation.navigate("Home");
+    }
+  }
+
   return (
     <View style={styles.container}>
       <Image source={require("../../../assets/images/logo.png")} style={styles.image}/>
@@ -13,7 +23,7 @@ const LoginDisplay = (props) => {
         <Input style={styles.input} placeholder={"user"}/>
         <Input style={styles.input} placeholder={"password"} secureTextEntry={true}/>
       </View>
-      <Button title={"Login"} titleStyle={styles.buttonText} containerStyle={styles.button} onPressIn={() => navigation.navigate("Home")}/>
+      <Button title={"Login"} titleStyle={styles.buttonText} containerStyle={styles.button} onPress={() => login()}/>
     </View>
   );
 };

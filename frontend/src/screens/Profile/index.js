@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, Image, TouchableOpacity } from "react-native";
+import { View, Text, Image, TouchableOpacity, TextInput } from "react-native";
 import styles from "./styles";
 
 
@@ -11,15 +11,9 @@ const ProfileScreen = (props) => {
           <View style={styles.body}>
             <View style={styles.bodyContent}>
                             
-              <TouchableOpacity style={styles.buttonContainer}>
-                <Text>Dummy User Name</Text>  
-              </TouchableOpacity>          
-              <TouchableOpacity style={styles.buttonContainer}>
-                <Text>Best film genre</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.buttonContainer}>
-                 <Text>Worst film genre</Text>
-              </TouchableOpacity>
+              <TextInput style={styles.buttonContainer} value={"Dummy User Name"}/>
+              <TextInput style={styles.buttonContainer} value={"Best film genre"}/>
+              <TextInput style={styles.buttonContainer} value={"Worst film genre"}/>   
             </View>
         </View>
       </View>

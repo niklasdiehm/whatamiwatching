@@ -34,6 +34,7 @@ const styles = StyleSheet.create({
     width:250,
     borderRadius:10,
     backgroundColor: "#888888",
+    textAlign: 'center'
   },
 });
 
