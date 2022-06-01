@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.dhbw.wwi19b2.whatamiwatching.movie.entity.Genre;
 import com.dhbw.wwi19b2.whatamiwatching.movie.entity.Movie;
+import com.dhbw.wwi19b2.whatamiwatching.movie.entity.MovieDetail;
 import com.dhbw.wwi19b2.whatamiwatching.movie.service.MovieService;
 
 @RestController
@@ -26,5 +27,9 @@ public class MovieController {
 	@GetMapping(path = "/movies/discover")
 	public List<Movie> getMovies() {
 		return this.movieService.discoverMovies();
+	}
+	@GetMapping(path = "/movie")
+	public MovieDetail getMovieDetails() {
+		return this.movieService.getMovieDetail(338953);
 	}
 }

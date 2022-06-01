@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.dhbw.wwi19b2.whatamiwatching.movie.dto.GenreDTO;
 import com.dhbw.wwi19b2.whatamiwatching.movie.dto.MovieDTO;
+import com.dhbw.wwi19b2.whatamiwatching.movie.entity.MovieDetail;
 
 @FeignClient(name = "MovieDBWebService", url="https://api.themoviedb.org/3/")
 public interface MovieProxy {
@@ -16,4 +17,8 @@ public interface MovieProxy {
 	@GetMapping(path = "/discover/movie?api_key={apiKey}&language=en-US&sort_by=popularity.desc&page=1&with_genres={genreID}")
 	MovieDTO discoverMovies(@RequestParam(required = true, name = "apiKey") String apiKey,
 			@RequestParam(required = true, name = "genreID") int genreID);
+	
+	@GetMapping(path = "/movie/{movieID}?api_key={apiKey}&language=en-US")
+	MovieDetail getMovieDetails(@RequestParam(required = true, name = "movieID") int movieID,
+			@RequestParam(required = true, name = "apiKey") String apiKey);
 }
