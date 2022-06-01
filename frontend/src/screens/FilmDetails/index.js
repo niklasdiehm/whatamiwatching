@@ -4,9 +4,14 @@ import styles from "./styles";
 import YoutubePlayer from 'react-native-youtube-iframe';
 import Stars from 'react-native-stars';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { useNavigation, useRoute } from "@react-navigation/native";
 
-const FilmDetailsScreen = (props) => {
-    
+
+const FilmDetailsScreen = (props, params) => {
+    const navigation = useNavigation();
+    const routes = useRoute();
+    const id = "";
+
     return(
       <View style={styles.container}>
         <YoutubePlayer
@@ -14,6 +19,9 @@ const FilmDetailsScreen = (props) => {
           height={300}
           videoId={'o4wZ_SBom88'}
         />
+
+        <Text>{id} + fdsfsd</Text>
+
         <Stars
           default={5.5}
           disabled={true}
