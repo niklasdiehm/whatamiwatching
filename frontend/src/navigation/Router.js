@@ -47,9 +47,12 @@ const Router = (props) => {
         <Stack.Screen
           name={"FilmDetails"}
           component={FilmDetailsScreen}
+          params={{
+            movieID: 0
+          }}
           options={{
             title: "FilmTitle",
-            headerBackTitle: "Back"
+            headerBackTitle: "Back",
           }}
         />
       </Stack.Navigator>

@@ -6,6 +6,7 @@ import Stars from 'react-native-stars';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const FilmDetailsScreen = (props) => {
+    
     return(
       <View style={styles.container}>
         <YoutubePlayer
@@ -13,7 +14,7 @@ const FilmDetailsScreen = (props) => {
           height={300}
           videoId={'o4wZ_SBom88'}
         />
-         <Stars
+        <Stars
           default={5.5}
           disabled={true}
           count={10}
@@ -22,9 +23,8 @@ const FilmDetailsScreen = (props) => {
           fullStar={<Icon name={'star'} size={30} style={[styles.myStarStyle]}/>}
           emptyStar={<Icon name={'star-outline'} size={30} style={[styles.myStarStyle, styles.myEmptyStarStyle]}/>}
           halfStar={<Icon name={'star-half'} size={30} style={[styles.myStarStyle]}/>}
-    
-  
-  />
+        />
+        
         <Text style={styles.description}>descriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescription</Text>
       <View style={styles.logoContainer}>
       <Image  style={styles.logo} source={require('../../../assets/images/netflix.png')} />

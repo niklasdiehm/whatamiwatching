@@ -3,21 +3,25 @@ import { View} from 'react-native';
 import styles from './styles';
 import {ListItem} from "@rneui/themed";
 import { useNavigation } from "@react-navigation/native";
-import FontAwesome from "react-native-vector-icons/FontAwesome";
+import Movie from "../../components/Movie";
+import api from "../../services/api";
 
 const list = [
   {
     filmName: 'Amy',
-    description: 'Vice President'
+    description: 'Vice President',
+    id: 22
   },
   {
     filmName: 'Chris Jackson',
-    description: 'Vice Chairman'
+    description: 'Vice Chairman',
+    id: 24
   }
 ]
 
+//const movie = api.getMovieById(movieId);
 
-const FilmListScreen = () => {
+const FilmListScreen = (props) => {
   const navigation = useNavigation();
   return (
     <View style={styles.container}>
@@ -25,7 +29,7 @@ const FilmListScreen = () => {
         list.map((l, i) => (
           <ListItem key={i} 
             bottomDivider
-            onPress={() => navigation.navigate("FilmDetails")}>
+            onPress={() =>  navigation.navigate("FilmDetails", {movieID: l.id})}>
             <ListItem.Content>
               <ListItem.Title>{l.filmName}</ListItem.Title>
               <ListItem.Subtitle>{l.description}</ListItem.Subtitle>

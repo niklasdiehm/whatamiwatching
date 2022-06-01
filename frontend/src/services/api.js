@@ -9,4 +9,15 @@ const api = axios.create({
 /* /movie
 /user
 /movie/genres */
+
+function getMovieById(movieID) {
+    axios
+        .get(baseURL + "/" + movieID)
+        .then((response) => {
+            return response;
+        });
+};
+
+
+
 export default api;
