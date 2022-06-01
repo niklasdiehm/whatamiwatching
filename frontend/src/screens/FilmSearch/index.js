@@ -1,20 +1,20 @@
-import React from "react";
-import { View, Text, Image, TouchableOpacity } from "react-native";
+import React, { useState } from "react";
+import { View, TextInput, Input } from "react-native";
 import styles from "./styles";
-import YoutubePlayer from 'react-native-youtube-iframe';
-import Stars from 'react-native-stars';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-const FilmSearchScreen = (props) => {
+
+const MovieSearchScreen = (props) => {
     return(
+      <View>
         <TextInput
-        style={styles.textInput}
-        placeholder={"Which genre?"}
-        onChangeText={setInputText}
-      />
+          style={styles.textInput}
+          placeholder={"Which genre?"}
+        />
+        <Input type={"number"}/>
       
-      
+
+      </View>
     )
 };
 
-export default FilmSearchScreen;
+export default MovieSearchScreen;

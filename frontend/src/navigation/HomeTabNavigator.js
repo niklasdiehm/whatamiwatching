@@ -1,7 +1,7 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import HomeScreen from "../screens/Home";
-import ExploreNavigator from "./ExploreNavigator";
+import MovieSearchScreen from "../screens/FilmSearch";
 import ProfileScreen from "../screens/Profile";
 import FilmListScreen from "../screens/FilmList";
 
@@ -27,7 +27,7 @@ const HomeTabNavigator = (props) => {
       />
       <Tab.Screen
         name={"Search Movie"}
-        component={HomeScreen}
+        component={MovieSearchScreen}
         options={{
           tabBarIcon: ({ color }) => (
             <FontAwesome name="question" size={25} color={color} />
