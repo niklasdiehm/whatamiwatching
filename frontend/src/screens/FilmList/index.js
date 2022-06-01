@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { View} from 'react-native';
 import styles from './styles';
 import {ListItem} from "@rneui/themed";
 import { useNavigation } from "@react-navigation/native";
 import Movie from "../../components/Movie";
 import api from "../../services/api";
+
+
 
 const list = [
   {
@@ -21,7 +23,7 @@ const list = [
 
 //const movie = api.getMovieById(movieId);
 
-const FilmListScreen = (props) => {
+const FilmListScreen = () => {
   const navigation = useNavigation();
   return (
     <View style={styles.container}>

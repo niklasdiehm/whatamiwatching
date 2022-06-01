@@ -1,5 +1,5 @@
-import React from "react";
-import { View, Text, Image, TouchableOpacity } from "react-native";
+import React, { Component } from "react";
+import { View, Text, Image, TouchableOpacity, TouchableHighlightBase } from "react-native";
 import styles from "./styles";
 import YoutubePlayer from 'react-native-youtube-iframe';
 import Stars from 'react-native-stars';
@@ -7,10 +7,8 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useNavigation, useRoute } from "@react-navigation/native";
 
 
-const FilmDetailsScreen = (props, params) => {
-    const navigation = useNavigation();
-    const routes = useRoute();
-    const id = "";
+const FilmDetailsScreen = ({route}) => {
+  const { movieID } = route.params;
 
     return(
       <View style={styles.container}>
@@ -19,8 +17,7 @@ const FilmDetailsScreen = (props, params) => {
           height={300}
           videoId={'o4wZ_SBom88'}
         />
-
-        <Text>{id} + fdsfsd</Text>
+        <Text>{movieID}</Text>
 
         <Stars
           default={5.5}
