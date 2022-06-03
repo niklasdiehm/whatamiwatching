@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.dhbw.wwi19b2.whatamiwatching.user.dto.ResultUserDTO;
 import com.dhbw.wwi19b2.whatamiwatching.user.service.UserException;
 import com.dhbw.wwi19b2.whatamiwatching.user.service.UserService;
 
@@ -17,8 +18,8 @@ public class UserController {
 	private UserService service;
 	
 	@GetMapping("/login")
-	public boolean login(@RequestParam(required = false) String username) throws UserException {
-		return this.service.login("Affenkopf", "password");
+	public ResultUserDTO login(@RequestParam(required = true) String username, @RequestParam(required = true) String password) throws UserException {
+		return this.service.login(username, password);
 	}
 	
 }

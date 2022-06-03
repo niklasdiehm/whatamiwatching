@@ -11,6 +11,7 @@ import javax.crypto.spec.PBEKeySpec;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.dhbw.wwi19b2.whatamiwatching.user.dto.ResultUserDTO;
 import com.dhbw.wwi19b2.whatamiwatching.user.entity.User;
 import com.dhbw.wwi19b2.whatamiwatching.user.repository.UserRepository;
 
@@ -20,7 +21,7 @@ public class UserService {
 	@Autowired
 	private UserRepository repository;
 	
-	public boolean login(String userName, String plainPassword) throws UserException {
+	public ResultUserDTO login(String userName, String plainPassword) throws UserException {
 		if (userName.isBlank() || plainPassword.isEmpty())
 			throw new UserException("Username empty.");
 		try {
@@ -31,13 +32,16 @@ public class UserService {
 	        byte[] hash = skf.generateSecret(pbeKeySpec).getEncoded();
 	        String base64Hash = Base64.getMimeEncoder().encodeToString(hash).replace("\n", "").replace("\r", "");
 	        boolean passwordSame = base64Hash.equals(user.getPasswordHash().replace("\n", "").replace("\r", ""));
-	        return passwordSame;
+	        ResultUserDTO userDTO = new ResultUserDTO();
+	        userDTO.setLoginSucessful(passwordSame);
+	        if (passwordSame) userDTO.setUserID(user.getId());
+	        return userDTO;
 			
 		} catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
 			
 			e.printStackTrace();
 		}
-		return false;
+		return new ResultUserDTO(false, 0);
 		
 	}
 	@SuppressWarnings("unused")
