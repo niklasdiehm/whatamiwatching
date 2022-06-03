@@ -7,4 +7,4 @@ cd ./backend
 docker compose up --force-recreate --build -d
 ```
 
-This starts the nameserver and the admin server.
+This starts all backend services (currently nameserver, admin, gateway, movie and user).
