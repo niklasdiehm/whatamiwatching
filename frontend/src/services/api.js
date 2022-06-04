@@ -10,7 +10,15 @@ const api = axios.create({
 /user
 /movie/genres */
 
-function getMovieById(movieID) {
+export function getLoginValidation(userName, password) {
+        axios
+            .get(baseURL + "/" + userName)
+            .then((response) => {
+                return response;
+            });
+}
+
+export function getMovieById(movieID) {
     axios
         .get(baseURL + "/" + movieID)
         .then((response) => {
@@ -18,6 +26,28 @@ function getMovieById(movieID) {
         });
 };
 
+export function getFavoriteGenre(userName){
+    axios
+        .get(baseURL + "/" + userName)
+        .then((response) => {
+            return response;
+        })
+}
 
+export function getMoviesByGenre(genreID) {
+    axios
+        .get(baseURL + "/movie/" + genreID)
+        .then((response) => {
+            return response;
+        })
+}
+
+export function getMoviesByGenreAndDuration(genreID, maxLength){
+    axios
+        .get(baseURL + "/" + genreID)
+        .then((response) => {
+            return response;
+        })
+}
 
 export default api;
