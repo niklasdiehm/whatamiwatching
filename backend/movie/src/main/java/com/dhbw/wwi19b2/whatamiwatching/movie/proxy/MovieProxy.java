@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.dhbw.wwi19b2.whatamiwatching.movie.dto.GenreDTO;
 import com.dhbw.wwi19b2.whatamiwatching.movie.dto.MovieDTO;
+import com.dhbw.wwi19b2.whatamiwatching.movie.dto.MovieVideoDTO;
+import com.dhbw.wwi19b2.whatamiwatching.movie.dto.MovieWatchProviderDTO;
 import com.dhbw.wwi19b2.whatamiwatching.movie.entity.MovieDetail;
 
 @FeignClient(name = "MovieDBWebService", url="https://api.themoviedb.org/3/")
@@ -20,5 +22,13 @@ public interface MovieProxy {
 	
 	@GetMapping(path = "/movie/{movieID}?api_key={apiKey}&language=en-US")
 	MovieDetail getMovieDetails(@RequestParam(required = true, name = "movieID") int movieID,
+			@RequestParam(required = true, name = "apiKey") String apiKey);
+	
+	@GetMapping(path = "movie/{movieID}/watch/providers?api_key={apiKey}&language=en-US")
+	MovieWatchProviderDTO getMovieWatchProviders(@RequestParam(required = true, name = "movieID") int movieID,
+			@RequestParam(required = true, name = "apiKey") String apiKey);
+	
+	@GetMapping(path = "movie/{movieID}/videos?api_key={apiKey}&language=en-US")
+	MovieVideoDTO getMovieVideos(@RequestParam(required = true, name = "movieID") int movieID,
 			@RequestParam(required = true, name = "apiKey") String apiKey);
 }

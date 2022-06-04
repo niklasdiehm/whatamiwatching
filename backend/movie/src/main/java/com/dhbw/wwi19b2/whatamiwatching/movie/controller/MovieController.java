@@ -5,11 +5,15 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.dhbw.wwi19b2.whatamiwatching.movie.dto.MovieWatchProviderDTO;
+import com.dhbw.wwi19b2.whatamiwatching.movie.dto.ResultMovieDetailDTO;
 import com.dhbw.wwi19b2.whatamiwatching.movie.entity.Genre;
 import com.dhbw.wwi19b2.whatamiwatching.movie.entity.Movie;
 import com.dhbw.wwi19b2.whatamiwatching.movie.entity.MovieDetail;
+import com.dhbw.wwi19b2.whatamiwatching.movie.entity.MovieWatchProvider;
 import com.dhbw.wwi19b2.whatamiwatching.movie.service.MovieService;
 
 @RestController
@@ -29,7 +33,7 @@ public class MovieController {
 		return this.movieService.discoverMovies();
 	}
 	@GetMapping(path = "/movie")
-	public MovieDetail getMovieDetails() {
-		return this.movieService.getMovieDetail(338953);
+	public ResultMovieDetailDTO getMovieDetails(@RequestParam(name="movieID", defaultValue = "338953") int movieID) {
+		return this.movieService.getMovieDetail(movieID);
 	}
 }

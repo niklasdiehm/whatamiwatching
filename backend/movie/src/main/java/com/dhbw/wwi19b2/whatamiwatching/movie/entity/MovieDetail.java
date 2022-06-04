@@ -20,4 +20,6 @@ public class MovieDetail {
 	private String tagline;
 	private float vote_average;
 	private int vote_count;
+	private String backdrop_path;
+	private String poster_path;
 }
