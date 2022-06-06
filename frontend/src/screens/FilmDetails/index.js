@@ -10,7 +10,7 @@ import Movie from "../../components/Movie";
 
 const FilmDetailsScreen = ({ route }) => {
   const { movieID } = route.params;
-  Movie = api.getMovieById(movieID);
+  // Movie = api.getMovieById(movieID);
   return (
     <View style={styles.container}>
       <YoutubePlayer
@@ -21,7 +21,7 @@ const FilmDetailsScreen = ({ route }) => {
       <Text>{movieID}</Text>
 
       <Stars
-        default={Movie.rating}
+        default={5}
         disabled={true}
         count={10}
         half={true}
@@ -31,7 +31,7 @@ const FilmDetailsScreen = ({ route }) => {
         halfStar={<Icon name={'star-half'} size={30} style={[styles.myStarStyle]} />}
       />
 
-      <Text style={styles.description}>{Movie.description}</Text>
+      <Text style={styles.description}>description</Text>
       <View style={styles.logoContainer}>
         <Image style={styles.logo} source={require('../../../assets/images/netflix.png')} />
         <Image style={styles.logo} source={require('../../../assets/images/prime.png')} />
