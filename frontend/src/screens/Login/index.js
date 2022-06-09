@@ -11,15 +11,20 @@ const LoginDisplay = (props) => {
   const [password, onChangePassword] = useState('')
   const navigation = useNavigation();
   const api2 = new api();
-  function login(userName, password) {
-    var loggedIn = false;
-    // console.log(api2.getLoginValidation(userName, password))
-    const [login, user] = JSON.parse(api2.getLoginValidation(userName, password));
-    loggedIn = login
-    if(loggedIn === "true"){
-      var userID = user;
-      navigation.navigate("FilmListScreen", { userID: userID });
+
+
+  async function login(userName, password) {
+    const data = await api2.getLoginValidation(userName, password);
+    
+    if(data[0] === true){
+      console.log(data)
+      const loggedIn = data[0]
+      const userID = data[1]
+      if(loggedIn === "true"){
+        navigation.navigate("FilmListScreen", { userID: userID });
+      }
     }
+    
   }
 
   return (

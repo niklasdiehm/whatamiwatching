@@ -21,21 +21,18 @@ export class api extends Component {
     // }
 
 
-    getLoginValidation(username, password) {
-        axios({
-            method: 'get',
-            url: 'http://localhost:8080/api' + '/user/login?username=' + username + '&password=' + password
-        })
-            .then((response) => {
-                return response;
+    async getLoginValidation(username, password, _callback) {
+        axios.get('http://192.168.178.73:8080/api' + '/user/login?username=' + username + '&password=' + password)
+        .then((response) => {
+            const loggedIn = response.data.loginSucessful
+            const userID = response.data.userID
+                console.log(loggedIn, userID)
+                return [loggedIn, userID]
+                _callback()
             }).catch((error) => {
-                 console.log(error.request);
-                console.log(error.response.data);
-                console.log(error.response.status);
-                console.log(error.response.header);
-                console.log(error.response.statusText);
-                 console.log(error);
-            });
+                console.log(error)
+            })
+       
     }
 
     // getLoginValidated(username, password) {
