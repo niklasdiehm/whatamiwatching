@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.dhbw.wwi19b2.whatamiwatching.movie.dto.ResultMovieDetailDTO;
-import com.dhbw.wwi19b2.whatamiwatching.movie.entity.Genre;
 import com.dhbw.wwi19b2.whatamiwatching.movie.entity.Movie;
 import com.dhbw.wwi19b2.whatamiwatching.movie.entity.MovieDetail;
 import com.dhbw.wwi19b2.whatamiwatching.movie.entity.MovieVideo;
@@ -19,10 +18,6 @@ public class MovieService {
 
 	@Autowired
 	private MovieProxy movieProxy;
-	
-	public List<Genre> getGenres() {
-		return this.movieProxy.getGenres(apiKey).getGenres();
-	}
 	
 	public List<Movie> discoverMovies() {
 		return this.movieProxy.discoverMovies(apiKey, 28).getResults();
