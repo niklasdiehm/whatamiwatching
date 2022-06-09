@@ -8,10 +8,10 @@ import api from "./../../services/api";
 
 const LoginDisplay = (props) => {
   const navigation = useNavigation();
-
+  
   function login(userName, password) {
     var loggedIn = false;
-    returnData["",""] = JSON.parse(api.getLoginValidation(userName, password))
+    const returnData = JSON.parse(api.getLoginValidation(userName, password))
     loggedIn = returnData[0];
     if(loggedIn === "true"){
       var userID = returnData[1];
