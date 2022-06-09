@@ -20,6 +20,12 @@ spring:
             - Path=/api/movie/**
           filters:
             - RewritePath=/api/movie/, /
+        - id: genre_backend
+          uri: lb://WAIW-GENRE
+          predicates:
+            - Path=/api/genre/**
+          filters:
+            - RewritePath=/api/genre/, /
 server:
   port: 8080
 eureka:
