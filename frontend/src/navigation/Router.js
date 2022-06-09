@@ -21,7 +21,7 @@ const Router = (props) => {
           }}/>
 
         <Stack.Screen
-          name={"Home"}
+          name={"FilmListScreen"}
           component={HomeTabNavigator}
           options={{
             headerShown: false,
