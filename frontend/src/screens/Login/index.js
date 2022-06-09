@@ -8,11 +8,12 @@ import api from "./../../services/api";
 
 const LoginDisplay = (props) => {
   const navigation = useNavigation();
-  
+  const api2 = new api();
   function login(userName, password) {
     var loggedIn = false;
-    const returnData = JSON.parse(api.getLoginValidation(userName, password))
-    loggedIn = returnData[0];
+    console.log(api2.getLoginValidated(userName, password))
+    const [login, user] = Promise.all(api2.getLoginValidated(userName, password));
+    loggedIn = login
     if(loggedIn === "true"){
       var userID = returnData[1];
       navigation.navigate("FilmListScreen", { userID: userID });
