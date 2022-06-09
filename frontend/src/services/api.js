@@ -5,49 +5,17 @@ import { Component } from 'react';
 export class api extends Component {
 
 
-    //baseURL = 'localhost:8080/api'
-
-
-
     /* /movie
     /user
     /genre/list */
 
-    // getLoginValidation2(username, password) {
-    //     // data = {username: 'Affenkopf', password: 'password'}
-    //     response = axios.post('http://localhost:8080/api/user/login?username=' + username + '&password=' + password)
-    //     data = response.data
-    //     return data
-    // }
 
-
-    async getLoginValidation(username, password, _callback) {
-        axios.get('http://192.168.178.73:8080/api' + '/user/login?username=' + username + '&password=' + password)
-        .then((response) => {
-            const loggedIn = response.data.loginSucessful
-            const userID = response.data.userID
-                console.log(loggedIn, userID)
-                return [loggedIn, userID]
-                _callback()
-            }).catch((error) => {
-                console.log(error)
-            })
-       
+    // IP-Adresse benutzen von dem der es ausführt
+    async getLoginValidation(username, password) {
+        const response = await axios.get('http://192.168.0.202:8080/api' + '/user/login?username=' + username + '&password=' + password);
+        return response.data;
     }
 
-    // getLoginValidated(username, password) {
-    //     axios({
-    //         method: 'post',
-    //         url: 'http://localhost:8080/api/user',
-    //         data: {
-    //             username: username,
-    //             password: password
-    //         }
-    //     })
-    //         .then((response) => {
-    //             return response.data;
-    //         });
-    // }
     /* getMovieById(movieID) {
         axios
             .get(baseURL + "/" + movieID)
@@ -56,7 +24,12 @@ export class api extends Component {
             });
     };
     
-    getFavoriteGenre(userName) {
+    updateFavoriteGenre(genreID) {
+        axios
+            .post(baseURL + "/") --> post neues favorite Genre
+    }
+
+    getFavoriteGenre(userID)) {
         axios
             .get(baseURL + "/" + userName)
             .then((response) => {

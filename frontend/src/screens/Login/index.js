@@ -12,19 +12,11 @@ const LoginDisplay = (props) => {
   const navigation = useNavigation();
   const api2 = new api();
 
-
   async function login(userName, password) {
-    const data = await api2.getLoginValidation(userName, password);
-    
-    if(data[0] === true){
-      console.log(data)
-      const loggedIn = data[0]
-      const userID = data[1]
-      if(loggedIn === "true"){
-        navigation.navigate("FilmListScreen", { userID: userID });
-      }
-    }
-    
+    const {loginSucessful, userID} = await api2.getLoginValidation(userName, password);
+    if(loginSucessful === true){   
+        navigation.navigate("FilmListScreen", { userID: userID });  
+    }   
   }
 
   return (
