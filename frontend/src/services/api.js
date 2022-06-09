@@ -3,18 +3,19 @@
 
 import axios from 'axios';
 
-const api = axios.create({
-    baseURL: 'localhost:8080/api'
-})
+class apiClass{
+    const api = axios.create({
+        baseURL: 'localhost:8080/api'
+    })
 /* /movie
 /user
 /movie/genres */
 
-export function getLoginValidation(username, password) {
-    axios({
-        method: 'post',
-        url: baseURL + '/user/login?username=' + username + '&password=' + password
-    })
+    export function getLoginValidation(username, password) {
+        axios({
+            method: 'post',
+            url: baseURL + '/user/login?username=' + username + '&password=' + password
+        })
         .then((response) => {
             return response.data;
         });
@@ -51,5 +52,8 @@ export function getMoviesByGenreAndDuration(genreID, maxLength) {
             return response;
         })
 }
+}
 
-export default api;
+
+
+export default apiClass;
