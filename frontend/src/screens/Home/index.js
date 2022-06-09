@@ -3,9 +3,11 @@ import { View, Text, ImageBackground, Pressable } from "react-native";
 import styles from "./styles";
 import Fontisto from "react-native-vector-icons/Fontisto";
 import { useNavigation } from "@react-navigation/native";
+import api from "../../services/api";
 
-const HomeScreen = (props) => {
+const HomeScreen = (route) => {
   const navigation = useNavigation();
+  const { userID } = route.params;
   return (
     <View>
       <Pressable

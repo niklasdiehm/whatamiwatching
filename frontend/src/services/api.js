@@ -10,12 +10,18 @@ const api = axios.create({
 /user
 /movie/genres */
 
-export function getLoginValidation(userName, password) {
-        axios
-            .get(baseURL + "/" + userName)
-            .then((response) => {
-                return response;
-            });
+export function getLoginValidation(username, password) {
+    axios({
+        method: 'post',
+        url: baseURL + '/user',
+        data: {
+            userName: username,
+            password: password
+        }
+    })
+        .then((response) => {
+            return response.data;
+        });
 }
 
 export function getMovieById(movieID) {
@@ -26,7 +32,7 @@ export function getMovieById(movieID) {
         });
 };
 
-export function getFavoriteGenre(userName){
+export function getFavoriteGenre(userName) {
     axios
         .get(baseURL + "/" + userName)
         .then((response) => {
@@ -42,7 +48,7 @@ export function getMoviesByGenre(genreID) {
         })
 }
 
-export function getMoviesByGenreAndDuration(genreID, maxLength){
+export function getMoviesByGenreAndDuration(genreID, maxLength) {
     axios
         .get(baseURL + "/" + genreID)
         .then((response) => {

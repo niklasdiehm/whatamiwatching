@@ -3,16 +3,19 @@ import { View } from "react-native";
 import { Image, Input, Button,  } from '@rneui/base';
 import { useNavigation } from "@react-navigation/native";
 import styles from "./styles";
+import api from "./../../services/api";
 
 
 const LoginDisplay = (props) => {
   const navigation = useNavigation();
 
-  function login() {
-    var loggedIn = true; //Api Aufruf post --> Eingabe mitgeben
-    if(loggedIn){
-      //User setzen
-      navigation.navigate("Home");
+  function login(userName, password) {
+    var loggedIn = false;
+    returnData["",""] = JSON.parse(api.getLoginValidation(userName, password))
+    loggedIn = returnData[0];
+    if(loggedIn === "true"){
+      var userID = returnData[1];
+      navigation.navigate("FilmListScreen", { userID: userID });
     }
   }
 
