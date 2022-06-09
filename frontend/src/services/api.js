@@ -13,11 +13,7 @@ const api = axios.create({
 export function getLoginValidation(username, password) {
     axios({
         method: 'post',
-        url: baseURL + '/user',
-        data: {
-            userName: username,
-            password: password
-        }
+        url: baseURL + '/user/login?username=' + username + '&password=' + password
     })
         .then((response) => {
             return response.data;

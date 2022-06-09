@@ -11,6 +11,11 @@ const MovieSearchScreen = (props) => {
         style={styles.textInput}
         placeholder={"Which genre?"}
       />
+      <TextInput
+        keyboardType="numeric"
+        style={styles.textInput}
+        placeholder={"Duration in minutes"}
+      />
 
     </View>
   )
