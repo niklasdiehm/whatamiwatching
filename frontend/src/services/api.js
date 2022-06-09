@@ -11,30 +11,46 @@ export class api extends Component {
 
     /* /movie
     /user
-    /movie/genres */
+    /genre/list */
+
+    // getLoginValidation2(username, password) {
+    //     // data = {username: 'Affenkopf', password: 'password'}
+    //     response = axios.post('http://localhost:8080/api/user/login?username=' + username + '&password=' + password)
+    //     data = response.data
+    //     return data
+    // }
+
 
     getLoginValidation(username, password) {
         axios({
-            method: 'post',
-            url: 'localhost:8080/api' + '/user/login?username=' + username + '&password=' + password
+            method: 'get',
+            url: 'http://localhost:8080/api' + '/user/login?username=' + username + '&password=' + password
         })
             .then((response) => {
-                return response.data;
+                return response;
+            }).catch((error) => {
+                 console.log(error.request);
+                console.log(error.response.data);
+                console.log(error.response.status);
+                console.log(error.response.header);
+                console.log(error.response.statusText);
+                 console.log(error);
             });
     }
-    getLoginValidated(username, password) {
-        axios({
-            method: 'post',
-            url: 'locahost:8080/api/user',
-            data: {
-                username: username,
-                password: password
-            }
-        })
-            .then((response) => {
-                return response.data;
-            });
-    }
+
+    // getLoginValidated(username, password) {
+    //     axios({
+    //         method: 'post',
+    //         url: 'http://localhost:8080/api/user',
+    //         data: {
+    //             username: username,
+    //             password: password
+    //         }
+    //     })
+    //         .then((response) => {
+    //             return response.data;
+    //         });
+    // }
     /* getMovieById(movieID) {
         axios
             .get(baseURL + "/" + movieID)
