@@ -10,10 +10,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class GenreUser implements Serializable{/**
 	 * 
 	 */
@@ -31,4 +35,9 @@ public class GenreUser implements Serializable{/**
 	
 	@NotNull(message = "The genre-ID must not be null.")
 	private long genreID;
+	
+	public GenreUser(User user, long genreID) {
+		this.user = user;
+		this.genreID = genreID;
+	}
 }

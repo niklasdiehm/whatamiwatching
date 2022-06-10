@@ -11,6 +11,8 @@ import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -40,11 +42,14 @@ public class User implements Serializable {
 	private String userName;
 	
 	@NotNull(message = "The password-hash must not be null")
+	@JsonIgnore
 	private String passwordHash;
 	
 	@NotNull(message = "The password salt must not be null")
+	@JsonIgnore
 	private String salt;
 	
 	@OneToMany(mappedBy="user")
+	@JsonIgnore
     private Set<GenreUser> genreUsers;
 }

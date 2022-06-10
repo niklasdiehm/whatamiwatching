@@ -2,6 +2,8 @@ package com.dhbw.wwi19b2.whatamiwatching.genre.service;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,5 +36,16 @@ public class GenreService {
 		User user = this.userRepository.findById(userID);
 		List<GenreUser> genreUsers = this.genreUserRepository.findByUser(user);
 		return genreUsers.get(0);
+	}
+	@Transactional
+	public long saveFavorite(long userID, long genreID) {
+		User user = this.userRepository.findById(userID);
+		GenreUser genreUser = new GenreUser(user, genreID);
+		/* Currently, only one favorite feature per user is allowed. Therefore, every genre_user-entry for the user
+		 * gets deleted. */
+		long countRows = genreUserRepository.deleteByUser(user);
+		System.out.println(countRows);
+		GenreUser response = genreUserRepository.save(genreUser);
+		return response.getGenreID();
 	}
 }

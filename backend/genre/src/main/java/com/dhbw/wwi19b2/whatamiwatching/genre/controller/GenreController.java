@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -27,5 +29,10 @@ public class GenreController {
 	@GetMapping(path = "/favorite")
 	public GenreUser getGenres(@RequestParam(required=true) long userID) {
 		return this.genreService.getFavoriteGenre(userID);
+	}
+	
+	@PostMapping(path="/favorite")
+	public long changeFavoriteGenre(@RequestParam(required=true) long userID, @RequestParam(required = true) long genreID) {
+		return this.genreService.saveFavorite(userID, genreID);
 	}
 }
