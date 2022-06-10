@@ -24,3 +24,4 @@ Currently avaiable routes are:
 - http://localhost:8080/api/movie/discover (get movies)
 - http://localhost:8080/api/movie/movie (movie details)
 - http://localhost:8080/api/genre/list (genres)
+- http://localhost:8080/api/genre/favorite (favorite genre)
