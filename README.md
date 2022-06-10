@@ -26,4 +26,4 @@ Currently avaiable routes are:
 - http://localhost:8080/api/movie/movie?movieID={movieID} (movie details)
 - http://localhost:8080/api/genre/list (genres)
 - http://localhost:8080/api/genre/favorite?userID={userID} (favorite genre)
-- http://localhost:8080/api/genre/changefavorite?userID={userID}&genreID={genreID} (change favorite genre) WARNING: POST-Request
+- http://localhost:8080/api/genre/favorite?userID={userID}&genreID={genreID} (change favorite genre) WARNING: POST-Request
