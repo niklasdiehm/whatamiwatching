@@ -23,6 +23,7 @@ public class MovieDetailHelper {
 		resultMovieDTO.setTitle(movieDetail.getTitle());
 		resultMovieDTO.setVote_average(movieDetail.getVote_average());
 		resultMovieDTO.setVote_count(movieDetail.getVote_count());
+		if (movieWatchProvider == null) movieWatchProvider = new MovieWatchProvider();
 		if (movieWatchProvider.flatrate == null) movieWatchProvider.flatrate = new LinkedList<MovieWatchProviderDetails>();
 		if (movieWatchProvider.buy == null) movieWatchProvider.buy = new LinkedList<MovieWatchProviderDetails>();
 		if (movieWatchProvider.rent == null) movieWatchProvider.rent = new LinkedList<MovieWatchProviderDetails>();
