@@ -9,6 +9,7 @@ services:
         MYSQL_DATABASE: whatamiwatching
     volumes:
       - "./database/create.sql:/docker-entrypoint-initdb.d/1.sql"
+    restart: unless-stopped
   nameserver:
     build: ./nameserver
     container_name: nameserver
@@ -21,6 +22,7 @@ services:
       - "nameserver"
     ports:
       - "8888:8888"
+    restart: unless-stopped
   api-gateway:
     build: ./api-gateway
     container_name: api-gateway
@@ -29,6 +31,7 @@ services:
       - "admin"
     ports:
       - "8080:8080"
+    restart: unless-stopped
   user:
     build: ./user
     container_name: user
@@ -39,6 +42,7 @@ services:
       - "database"
     ports:
       - "8081:8081"
+    restart: unless-stopped
   movie:
     build: ./movie
     container_name: movie
@@ -48,6 +52,7 @@ services:
       - "api-gateway"
     ports:
       - "8082:8082"
+    restart: unless-stopped
   genre:
     build: ./genre
     container_name: genre
@@ -58,3 +63,4 @@ services:
       - "database"
     ports:
       - "8083:8083"
+    restart: unless-stopped

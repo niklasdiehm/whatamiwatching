@@ -27,4 +27,9 @@ public class MovieController {
 	public ResultMovieDetailDTO getMovieDetails(@RequestParam(name="movieID", defaultValue = "338953") int movieID) {
 		return this.movieService.getMovieDetail(movieID);
 	}
+	
+	@GetMapping(path = "/movieOfTheDay")
+	public List<Movie> movieOfTheDay(@RequestParam(required=false) Long userID) {
+		return this.movieService.getMovieOfTheDay(userID);
+	}
 }
