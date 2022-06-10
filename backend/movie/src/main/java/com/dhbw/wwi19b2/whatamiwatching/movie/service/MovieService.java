@@ -19,8 +19,18 @@ public class MovieService {
 	@Autowired
 	private MovieProxy movieProxy;
 	
-	public List<Movie> discoverMovies() {
-		return this.movieProxy.discoverMovies(apiKey, 28).getResults();
+	public List<Movie> discoverMovies(Long genreID, Long runtime) {
+		long runtime_long;
+		if (runtime == null) {
+			runtime_long = 10000;
+		} else {
+			runtime_long = runtime.longValue();
+		}
+		if (genreID == null) {
+			return this.movieProxy.discoverMovies(apiKey, runtime_long).getResults();
+		}
+		return this.movieProxy.discoverMovies(apiKey, runtime_long, genreID.longValue()).getResults();
+		
 	}
 	public ResultMovieDetailDTO getMovieDetail(int movieID) {
 		MovieDetail movieDetail = this.movieProxy.getMovieDetails(movieID, apiKey);

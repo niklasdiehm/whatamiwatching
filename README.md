@@ -21,8 +21,8 @@ Currently avaiable routes are:
 - http://localhost:8761 (nameserver)
 - http://localhost:8080 (gateway)
 - http://localhost:8080/api/user/login?username={username}&password={password} (login)
-- http://localhost:8080/api/movie/discover (get movies)
+- http://localhost:8080/api/movie/discover?genreID={genreID}&runtime={runtime} (get movies) WARNING: genreID and runtime are optional
 - http://localhost:8080/api/movie/movie?movieID={movieID} (movie details)
 - http://localhost:8080/api/genre/list (genres)
 - http://localhost:8080/api/genre/favorite?userID={userID} (favorite genre)
-- http://localhost:8080/api/genre/changefavorite?userID={userID}&genreID={genreID} (change favorite genre) ACHTUNG: POST-Request
+- http://localhost:8080/api/genre/changefavorite?userID={userID}&genreID={genreID} (change favorite genre) WARNING: POST-Request

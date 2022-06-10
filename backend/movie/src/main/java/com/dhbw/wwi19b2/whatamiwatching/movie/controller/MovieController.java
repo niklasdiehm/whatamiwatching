@@ -20,8 +20,8 @@ public class MovieController {
 	private MovieService movieService;
 	
 	@GetMapping(path = "/movies/discover")
-	public List<Movie> getMovies() {
-		return this.movieService.discoverMovies();
+	public List<Movie> getMovies(@RequestParam(required=false) Long genreID, @RequestParam(required=false) Long runtime) {
+		return this.movieService.discoverMovies(genreID, runtime);
 	}
 	@GetMapping(path = "/movie")
 	public ResultMovieDetailDTO getMovieDetails(@RequestParam(name="movieID", defaultValue = "338953") int movieID) {
