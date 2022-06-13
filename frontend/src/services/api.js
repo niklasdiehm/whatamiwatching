@@ -13,23 +13,23 @@ export class api extends Component {
     // IP-Adresse benutzen von dem der es ausführt
     async getLoginValidation(username, password) {
         const response = await axios.get('http://192.168.0.202:8080/api' + '/user/login?username=' + username + '&password=' + password);
-        if(response.status !== 200){
+        if (response.status !== 200) {
             console.log("Fehler")
         }
-        else{
-        return response.data;
+        else {
+            return response.data;
         }
     };
 
     async getMovieOfTheDay(userID) {
         const response = await axios.get('http://192.168.0.202:8080/api' + '/movie/movieOfTheDay?userID=' + userID);
-        if(response.status !== 200){
+        if (response.status !== 200) {
             console.log("Fehler")
         }
-        else{
-        return response.data;
+        else {
+            return response.data;
         }
-        
+
     };
 
     /* getMovieById(movieID) {
