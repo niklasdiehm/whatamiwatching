@@ -15,8 +15,14 @@ const LoginDisplay = (props) => {
   async function login(userName, password) {
     const {loginSucessful, userID} = await api2.getLoginValidation(userName, password);
     if(loginSucessful === true){   
-        navigation.navigate("FilmListScreen", { userID: userID });  
-    }   
+        const list1 = await getMovieOfTheDayList();
+        navigation.navigate("FilmListScreen", { userID: userID, list1: list1 });  
+      }   
+  }
+
+  async function getMovieOfTheDayList() {
+    list2 = [{adult, genre_ids: [], id, overview, release_date, title}] = await api2.getMovieOfTheDay(1);    
+    return list2;
   }
 
   return (

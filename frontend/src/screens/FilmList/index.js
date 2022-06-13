@@ -12,19 +12,18 @@ const FilmListScreen = (route) => {
   //const { userID } = route.params;
   const api2 = new api();
   
-
-  async function getMovieOfTheDayList() {
+  /* async function getMovieOfTheDayList() {
     list2 = [{adult, genre_ids: [], id, overview, release_date, title}] = await api2.getMovieOfTheDay(1);
     console.log(list2)
     
     return list2;
-  }
+  } */
 
 
   return (
     <View style={styles.container}>
       { 
-        getMovieOfTheDayList().map((l, i) => (
+        route.params.list1.map((l, i) => (
           <ListItem key={i}
             bottomDivider
             onPress={() => navigation.navigate("FilmDetails", { movieID: l.id })}>
