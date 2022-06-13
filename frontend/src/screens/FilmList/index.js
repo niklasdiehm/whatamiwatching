@@ -25,11 +25,16 @@ const filmList = [
 
 const FilmListScreen = (route) => {
   const navigation = useNavigation();
-  // const { userID } = route.params;
-  // const filmList = api.getMoviesByGenre();
+  //const { userID } = route.params;
+  const api2 = new api();
+
+  const list2 = api2.getMovieOfTheDay(1)
+  console.log(list2)
+
   return (
     <View style={styles.container}>
-      {
+      { 
+        
         filmList.map((l, i) => (
           <ListItem key={i}
             bottomDivider
