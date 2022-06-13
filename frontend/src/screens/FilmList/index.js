@@ -1,25 +1,39 @@
-import React, { useState } from 'react';
-import { FlatList, Text, View } from 'react-native';
-import styles from './styles';
+import { FlatList, Text, View } from "react-native";
+import React, { useEffect, useState } from "react";
+
 import { ListItem } from "@rneui/themed";
-import { useNavigation } from "@react-navigation/native";
 import api from "../../services/api";
-
-
+import styles from "./styles";
+import { useNavigation } from "@react-navigation/native";
 
 const FilmListScreen = (route) => {
   const navigation = useNavigation();
   //const { userID } = route.params;
   const api2 = new api();
 
+  const [movies, setMovies] = useState([]);
+  console.log(movies);
+
+  useEffect(() => {
+    async function getMovies() {
+      await getMovieOfTheDayList().then((items) => setMovies(items));
+    }
+    getMovies();
+  }, []);
 
   async function getMovieOfTheDayList() {
-    list2 = [{ adults, genre_ids: [], id, overview, release_date, title }] = await Promise.all(api2.getMovieOfTheDay(1));
-    console.log(list2)
-
+    list2 = [
+      {
+        adults,
+        genre_ids: [],
+        id,
+        overview,
+        release_date,
+        title,
+      },
+    ] = await api2.getMovieOfTheDay(1);
     return list2;
   }
-
 
   return (
     <View style={styles.container}>
@@ -36,23 +50,16 @@ const FilmListScreen = (route) => {
           </ListItem>
         )) */
         <FlatList
-        data={[
-          {key: getMovieOfTheDayList()[0]?.title || "not loaded yet"},
-          {key: 'Dan'},
-          {key: 'Dominic'},
-          {key: 'Jackson'},
-          {key: 'James'},
-          {key: 'Joel'},
-          {key: 'John'},
-          {key: 'Jillian'},
-          {key: 'Jimmy'},
-          {key: 'Julie'},
-        ]}
-        renderItem={({item}) => <Text style={styles.item}>{item.key}</Text>}
-      />
+          data={movies}
+          keyExtractor={(item) => item.id.toString()}
+          renderItem={({ item }) => {
+            console.log(item.id);
+            return <Text style={styles.item}>{item.title}</Text>;
+          }}
+        />
       }
     </View>
   );
-}
+};
 
 export default FilmListScreen;
