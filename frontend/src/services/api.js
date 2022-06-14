@@ -8,11 +8,11 @@ export class api extends Component {
     /* /movie
     /user
     /genre/list */
-
+    url = 'http://192.168.178.73:8080/api';
 
     // IP-Adresse benutzen von dem der es ausführt
     async getLoginValidation(username, password) {
-        const response = await axios.get('http://192.168.0.202:8080/api' + '/user/login?username=' + username + '&password=' + password);
+        const response = await axios.get(this.url + '/user/login?username=' + username + '&password=' + password);
         if (response.status !== 200) {
             console.log("Fehler")
         }
@@ -22,7 +22,7 @@ export class api extends Component {
     };
 
     async getMovieOfTheDay(userID) {
-        const response = await axios.get('http://192.168.0.202:8080/api' + '/movie/movieOfTheDay?userID=' + userID);
+        const response = await axios.get(this.url + '/movie/movieOfTheDay?userID=' + userID);
         if (response.status !== 200) {
             console.log("Fehler")
         }
