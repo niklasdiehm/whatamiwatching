@@ -1,36 +1,40 @@
-import { StyleSheet, Dimensions } from "react-native";
+import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
   container: {
-    height: "100%"
+    height: "100%",
+    alignItems: "center",
+    backgroundColor: "black",
   },
   image: {
-    width: "100%",
+    width: 300,
     height: 200,
     resizeMode: "stretch",
     justifyContent: "center",
     padding: 15,
+    marginBottom: 50,
+    marginTop: 100
   },
   input: {
-    marginTop:10,
-    height:50,
+    marginTop: 10,
+    height: 50,
     flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    paddingBottom:20,
-    width:250,
+    paddingBottom: 20,
+    width: 350,
+    backgroundColor: "white",
+    borderRadius: 50,
+    textAlign: "center"
   },
   buttonText: {
     color: "black",
     fontSize: 16,
-    fontWeight: "bold",
+    fontWeight: "bold"
   },
   button: {
-    marginTop:10,
-    height:60,
+    marginTop: 20,
+    height: 60,
     alignItems: 'center',
-    marginBottom:20,
-    borderRadius:10,
+    borderRadius: 0
   },
 });
 

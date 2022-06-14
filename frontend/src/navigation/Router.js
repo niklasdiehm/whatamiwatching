@@ -17,7 +17,8 @@ const Router = (props) => {
           name={"Login"}
           component={LoginDisplay}
           options={{
-            title: "Login"
+            title: "Login",
+            headerShown: false
           }}/>
 
         <Stack.Screen
