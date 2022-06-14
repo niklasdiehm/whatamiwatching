@@ -14,6 +14,7 @@ const FilmListScreen = (route) => {
   const [movies, setMovies] = useState([]);
   console.log(movies);
 
+  
   useEffect(() => {
     async function getMovies() {
       await getMovieOfTheDayList().then((items) => setMovies(items));
