@@ -15,5 +15,6 @@ public class Movie {
 	private String overview;
 	private String release_date;
 	private int[] genre_ids;
-	
+	private String backdrop_path;
+	private String poster_path;
 }
