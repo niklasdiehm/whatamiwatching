@@ -32,14 +32,29 @@ export class api extends Component {
 
     };
 
-    /* getMovieById(movieID) {
-        axios
-            .get(baseURL + "/" + movieID)
-            .then((response) => {
-                return response;
-            });
+    async getMovieByID(movieID) {
+        const response = await axios.get(this.url + '/movie/movie?movieID=' + movieID);
+        if (response.status !== 200) {
+            console.log("Fehler")
+        }
+        else {
+            return response.data;
+        }
+
     };
-    
+
+    async getGenres() {
+        const response = await axios.get(this.url + '/genre/list');
+        if (response.status !== 200) {
+            console.log("Fehler")
+        }
+        else {
+            return response.data;
+        }
+
+    };
+
+    /*
     updateFavoriteGenre(genreID) {
         axios
             .post(baseURL + "/") --> post neues favorite Genre

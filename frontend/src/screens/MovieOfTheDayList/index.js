@@ -1,4 +1,4 @@
-import { FlatList, Text, View } from "react-native";
+import { FlatList, Text, TouchableOpacity, View } from "react-native";
 import React, { useEffect, useState } from "react";
 
 import { ListItem } from "@rneui/themed";
@@ -6,15 +6,14 @@ import api from "../../services/api";
 import styles from "./styles";
 import { useNavigation } from "@react-navigation/native";
 
-const FilmListScreen = (route) => {
+const MovieOfTheDayListScreen = (route) => {
   const navigation = useNavigation();
   //const { userID } = route.params;
   const api2 = new api();
 
   const [movies, setMovies] = useState([]);
-  console.log(movies);
 
-  
+
   useEffect(() => {
     async function getMovies() {
       await getMovieOfTheDayList().then((items) => setMovies(items));
@@ -54,8 +53,12 @@ const FilmListScreen = (route) => {
           data={movies}
           keyExtractor={(item) => item.id.toString()}
           renderItem={({ item }) => {
-            console.log(item.id);
-            return <Text style={styles.item}>{item.title}</Text>;
+            return <TouchableOpacity onPress={() => navigation.navigate("FilmDetails", { movieID: item.id })}>
+              <View>
+                <Text style={styles.item}>{item.title}</Text>
+              </View>
+
+            </TouchableOpacity>;
           }}
         />
       }
@@ -63,4 +66,4 @@ const FilmListScreen = (route) => {
   );
 };
 
-export default FilmListScreen;
+export default MovieOfTheDayListScreen;
