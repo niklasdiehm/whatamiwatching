@@ -23,18 +23,18 @@ const styles = StyleSheet.create({
     width: 350,
     backgroundColor: "white",
     borderRadius: 50,
-    textAlign: "center"
+    textAlign: "center",
   },
   buttonText: {
     color: "black",
     fontSize: 16,
-    fontWeight: "bold"
+    fontWeight: "bold",
   },
   button: {
     marginTop: 20,
-    height: 60,
     alignItems: 'center',
-    borderRadius: 0
+    borderRadius: 5,
+    backgroundColor: '#59c9a1',
   },
 });
 

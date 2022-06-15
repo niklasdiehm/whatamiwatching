@@ -68,7 +68,7 @@ const FilmDetailsScreen = ({ route }) => {
         videoId={trailerID}
       />
 
-      <Text>{movies.title}</Text>
+      <Text style={styles.movieTitle}>{movies.title}</Text>
 
       <View style={styles.ratingBox}>
         <Stars
@@ -81,10 +81,10 @@ const FilmDetailsScreen = ({ route }) => {
           emptyStar={<Icon name={'star-outline'} size={30} style={[styles.myStarStyle, styles.myEmptyStarStyle]} />}
           halfStar={<Icon name={'star-half'} size={30} style={[styles.myStarStyle]} />}
         />
-        <Text>Cout Votes: {movies.vote_count}</Text>
+        <Text style={styles.counts}>{movies.vote_count} Votes</Text>
       </View>
 
-      <Text>{movies.overview}</Text>
+      <Text style={styles.overview}>{movies.overview}</Text>
       <View style={styles.logoContainer}>
         <Image style={styles.logo} source={require('../../../assets/images/netflix.png')} />
         <Image style={styles.logo} source={require('../../../assets/images/prime.png')} />

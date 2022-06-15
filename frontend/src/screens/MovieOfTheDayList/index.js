@@ -37,6 +37,7 @@ const MovieOfTheDayListScreen = (route) => {
 
   return (
     <View style={styles.container}>
+      <Text style={styles.title}>Movies of the Day:</Text>
       {
         /* getMovieOfTheDayList().map((l, i) => (
           <ListItem key={i}
@@ -51,6 +52,7 @@ const MovieOfTheDayListScreen = (route) => {
         )) */
         <FlatList
           data={movies}
+          style={styles.list}
           keyExtractor={(item) => item.id.toString()}
           renderItem={({ item }) => {
             return <TouchableOpacity onPress={() => navigation.navigate("FilmDetails", { movieID: item.id })}>

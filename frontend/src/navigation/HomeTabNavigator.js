@@ -23,6 +23,7 @@ const HomeTabNavigator = (props) => {
           tabBarIcon: ({ color }) => (
             <FontAwesome name="calendar" size={25} color={color} />
           ),
+          title: "Movie of the Day",
         }}
       />
       <Tab.Screen
