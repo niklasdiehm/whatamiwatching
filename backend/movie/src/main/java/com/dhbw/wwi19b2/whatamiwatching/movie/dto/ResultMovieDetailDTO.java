@@ -21,6 +21,6 @@ public class ResultMovieDetailDTO {
 	private float vote_average;
 	private int vote_count;
 	private List<MovieWatchProviderDetails> watchProviders;
-	private List<MovieVideo> videos;
+	private MovieVideo video;
 	
 }

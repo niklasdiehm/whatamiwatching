@@ -31,7 +31,12 @@ public class MovieDetailHelper {
 		List<MovieWatchProviderDetails> providers = Stream.concat(movieWatchProvider.flatrate.stream(), movieWatchProvider.buy.stream()).collect(Collectors.toList());
 		providers = Stream.concat(providers.stream(), movieWatchProvider.rent.stream()).collect(Collectors.toList());
 		resultMovieDTO.setWatchProviders(providers);
-		resultMovieDTO.setVideos(movieVideos);
+		if (movieVideos == null || movieVideos.isEmpty()) {
+			resultMovieDTO.setVideo(null);
+		} else {
+			MovieVideo trailer = movieVideos.stream().filter(item -> item.getType().equals("Trailer")).findAny().orElse(null);
+			resultMovieDTO.setVideo(trailer);
+		}
 		return resultMovieDTO;
 	}
 }
