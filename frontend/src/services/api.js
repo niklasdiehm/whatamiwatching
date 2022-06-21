@@ -8,7 +8,7 @@ export class api extends Component {
     /* /movie
     /user
     /genre/list */
-    url = 'http://172.16.75.83:8080/api';
+    url = 'http://192.168.178.73:8080/api';
 
     // IP-Adresse benutzen von dem der es ausführt
     async getLoginValidation(username, password) {
@@ -63,16 +63,16 @@ export class api extends Component {
             return response.data;
         }
     }
-    
+
     async updateFavoriteGenre(userID, genreID) {
-        const response = await axios.post(this.url + '/genre/favorite?userID=' +userID + '&genreID='+genreID);
+        const response = await axios.post(this.url + '/genre/favorite?userID=' + userID + '&genreID=' + genreID);
         if (response.status !== 200) {
             console.log("Fehler")
         }
         else {
             return response.data;
         }
-}
+    }
     /*
     getMoviesByGenre(genreID) {
         axios
