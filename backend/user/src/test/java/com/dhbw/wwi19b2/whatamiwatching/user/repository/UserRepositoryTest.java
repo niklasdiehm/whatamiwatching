@@ -22,10 +22,4 @@ public class UserRepositoryTest {
 		assertNotNull(user);
 		assertEquals(user.getId(), 1L);
 	}
-
-	@Test
-	public void test_error() {
-		Object nothing = null;
-		assertNotNull(nothing);
-	}
 }
