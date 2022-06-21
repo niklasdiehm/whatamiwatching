@@ -1,19 +1,23 @@
-import { React, useState } from "react";
+import { React, useState, useContext } from "react";
 import { View, SafeAreaView, TextInput } from "react-native";
 import { Image, Button, } from '@rneui/base';
 import { useNavigation } from "@react-navigation/native";
 import styles from "./styles";
 import api from "./../../services/api";
+import { ContextTest } from "../../../App";
 
 const LoginDisplay = (props) => {
   const [username, onChangeUsername] = useState('')
   const [password, onChangePassword] = useState('')
   const navigation = useNavigation();
+  const things = useContext(ContextTest)
   const api2 = new api();
 
   async function login(userName, password) {
     const { loginSucessful, userID } = await api2.getLoginValidation(userName, password);
     if (loginSucessful === true) {
+      things.userID = userID;
+      console.log(things)
       navigation.navigate("FilmListScreen", { userID: userID });
     }
   }
