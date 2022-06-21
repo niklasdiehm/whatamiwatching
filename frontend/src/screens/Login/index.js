@@ -5,7 +5,6 @@ import { useNavigation } from "@react-navigation/native";
 import styles from "./styles";
 import api from "./../../services/api";
 
-
 const LoginDisplay = (props) => {
   const [username, onChangeUsername] = useState('')
   const [password, onChangePassword] = useState('')
@@ -19,7 +18,6 @@ const LoginDisplay = (props) => {
     }
   }
 
-
   return (
     <View style={styles.container}>
       <Image source={require("../../../assets/images/logo.png")} style={styles.image} />
@@ -29,6 +27,7 @@ const LoginDisplay = (props) => {
       </SafeAreaView>
       <Button title={"Login"} titleStyle={styles.buttonText} containerStyle={styles.button} onPress={() => login(username, password)} />
     </View>
+    
   );
 };
 

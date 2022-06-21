@@ -3,16 +3,12 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
   container: {
     height: "100%",
-    alignItems: "center",
     backgroundColor: "black",
-  },
-  player: {
-    backgroundColor: "white"
+    justifyContent: "center"
   },
   movieTitle: {
     color: "white",
     fontSize: 25,
-    fontFamily: "monospace"
   },
   myStarStyle: {
     color: '#9477fc',

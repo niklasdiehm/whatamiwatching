@@ -8,7 +8,7 @@ export class api extends Component {
     /* /movie
     /user
     /genre/list */
-    url = 'http://192.168.178.73:8080/api';
+    url = 'http://172.16.75.83:8080/api';
 
     // IP-Adresse benutzen von dem der es ausführt
     async getLoginValidation(username, password) {
@@ -33,14 +33,14 @@ export class api extends Component {
     };
 
     async getMovieByID(movieID) {
-        const response = await axios.get(this.url + '/movie/movie?movieID=' + movieID);
-        if (response.status !== 200) {
-            console.log("Fehler")
-        }
-        else {
+        console.log(movieID)
+        try {
+            const response = await axios.get(this.url + '/movie/movie?movieID=' + movieID);
             return response.data;
+        } catch (error) {
+            console.log("Fehler")
+            console.log(error)
         }
-
     };
 
     async getGenres() {
@@ -51,23 +51,29 @@ export class api extends Component {
         else {
             return response.data;
         }
-
     };
 
-    /*
-    updateFavoriteGenre(genreID) {
-        axios
-            .post(baseURL + "/") --> post neues favorite Genre
-    }
 
-    getFavoriteGenre(userID)) {
-        axios
-            .get(baseURL + "/" + userName)
-            .then((response) => {
-                return response;
-            })
+    async getFavoriteGenre(userID) {
+        const response = await axios.get(this.url + '/genre/favorite?userID=' + userID);
+        if (response.status !== 200) {
+            console.log("Fehler")
+        }
+        else {
+            return response.data;
+        }
     }
     
+    async updateFavoriteGenre(userID, genreID) {
+        const response = await axios.post(this.url + '/genre/favorite?userID=' +userID + '&genreID='+genreID);
+        if (response.status !== 200) {
+            console.log("Fehler")
+        }
+        else {
+            return response.data;
+        }
+}
+    /*
     getMoviesByGenre(genreID) {
         axios
             .get(baseURL + "/movie/" + genreID)

@@ -11,68 +11,37 @@ const FilmDetailsScreen = ({ route }) => {
   const { movieID } = route.params;
   const api2 = new api();
 
-  const [movies, setMovies] = useState([]);
-  const [trailerID, setTrailerID] = useState('');
+  const [movie, setMovie] = useState({});
 
-
+  console.log(movieID)
   useEffect(() => {
     async function getMovies() {
-      await getMovieByID().then((items) => setMovies(items));
-      //getTrailer();
-    }
-    async function getTrailer() {
-      await getTrailerIdFromMovie().then((trailerID) => setTrailerID(trailerID));
+      await getMovieByID().then((items) => setMovie(items));
     }
     getMovies();
 
   }, []);
 
-
   async function getMovieByID() {
-    movie = {
-      id,
-      title,
-      overview,
-      runtime,
-      genres: [{ id, name },],
-      release_date,
-      tagline,
-      vote_average,
-      vote_count,
-      watchProviders: [{ logo_path, provider_id, provider_name },],
-      videos: [{ id, key, site, type },]
-    }
-      = await api2.getMovieByID(movieID);
-    setTrailerID(getTrailerIdFromMovie());
-    console.log(trailerID);
-    return movie;
+    movieResponse = await api2.getMovieByID(movieID);
+    return movieResponse;
   }
-
-  function getTrailerIdFromMovie() {
-    console.log(movies)
-    var id = movies.map(({ videos }) => videos.filter((type) => type === 'Trailer'));
-    // var id = movies.videos.find(videos => videos['type' === 'Trailer'])
-    console.log(id)
-    return id;
-    // if (movies.filter(e => e.type === 'Trailer').length > 0) {
-    //   return e.id
-    // }
-  }
-
-
   return (
     <View style={styles.container}>
-      <YoutubePlayer
-        style={styles.player}
-        height={300}
-        videoId={trailerID}
-      />
+      {movie && movie.video ?
+        <YoutubePlayer
+          style={styles.player}
+          height={300}
+          videoId={movie.video.key}
+          />
+      : null}
+      
 
-      <Text style={styles.movieTitle}>{movies.title}</Text>
+      <Text style={styles.movieTitle}>{movie.title}</Text>
 
       <View style={styles.ratingBox}>
         <Stars
-          default={movies.vote_average}
+          default={movie.vote_average}
           disabled={true}
           count={10}
           half={true}
@@ -81,17 +50,14 @@ const FilmDetailsScreen = ({ route }) => {
           emptyStar={<Icon name={'star-outline'} size={30} style={[styles.myStarStyle, styles.myEmptyStarStyle]} />}
           halfStar={<Icon name={'star-half'} size={30} style={[styles.myStarStyle]} />}
         />
-        <Text style={styles.counts}>{movies.vote_count} Votes</Text>
+        <Text style={styles.counts}>{movie.vote_count} Votes</Text>
       </View>
 
-      <Text style={styles.overview}>{movies.overview}</Text>
-      <View style={styles.logoContainer}>
-        <Image style={styles.logo} source={require('../../../assets/images/netflix.png')} />
-        <Image style={styles.logo} source={require('../../../assets/images/prime.png')} />
-        <Image style={styles.logo} source={require('../../../assets/images/apple.jpg')} />
-        <Image style={styles.logo} source={require('../../../assets/images/sky.png')} />
-        <Image style={styles.logo} source={require('../../../assets/images/joyn.png')} />
-      </View>
+      <Text style={styles.overview}>{movie.overview}</Text>
+      <FlatList horizontal data={movie && movie.watchProviders ? movie.watchProviders : []} keyExtractor={(watchProvider) => watchProvider.provider_id} renderItem={({item}) => {
+        console.log("https://image.tmdb.org/t/p/w500" + item["logo_path"])
+        return <Image source={{uri: "https://image.tmdb.org/t/p/w500" + item["logo_path"]}} style={{width: 200, height: 200}} />;
+      }} />
     </View>
   )
 };

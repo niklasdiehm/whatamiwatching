@@ -1,7 +1,5 @@
 import { FlatList, Text, TouchableOpacity, View } from "react-native";
 import React, { useEffect, useState } from "react";
-
-import { ListItem } from "@rneui/themed";
 import api from "../../services/api";
 import styles from "./styles";
 import { useNavigation } from "@react-navigation/native";
@@ -39,17 +37,6 @@ const MovieOfTheDayListScreen = (route) => {
     <View style={styles.container}>
       <Text style={styles.title}>Movies of the Day:</Text>
       {
-        /* getMovieOfTheDayList().map((l, i) => (
-          <ListItem key={i}
-            bottomDivider
-            onPress={() => navigation.navigate("FilmDetails", { movieID: l.id })}>
-            <ListItem.Content>
-              <ListItem.Title>{l?.title || "Not loaded yet"}</ListItem.Title>
-              <ListItem.Subtitle>{l?.id || "Not loaded yet"}</ListItem.Subtitle>
-            </ListItem.Content>
-            <ListItem.Chevron color="black" />
-          </ListItem>
-        )) */
         <FlatList
           data={movies}
           style={styles.list}

@@ -22,7 +22,6 @@ const styles = StyleSheet.create({
     padding: 10,
     paddingTop: 25,
     fontSize: 30,
-    fontFamily: "monospace",
   },
 });
 

@@ -1,9 +1,12 @@
+import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import { View, Text, Image, TouchableOpacity, TextInput } from "react-native";
 import styles from "./styles";
 
 
-const ProfileScreen = (props) => {
+const ProfileScreen = (route) => {
+  const userID = route.params;
+
     return(
         <View style={styles.container}>
           <View style={styles.header}></View>

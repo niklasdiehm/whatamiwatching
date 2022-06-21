@@ -49,8 +49,12 @@ const Router = (props) => {
           name={"FilmDetails"}
           component={FilmDetailsScreen}
           options={{
-            title: "FilmTitle",
+            title: "",
             headerBackTitle: "Back",
+            headerTintColor: "white",
+            headerStyle: {
+              backgroundColor: "black"
+            }
           }}
         />
       </Stack.Navigator>
