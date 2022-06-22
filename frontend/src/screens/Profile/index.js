@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { View, Text, Image, TextInput } from "react-native";
+import { View, Button, Image, TextInput, ToastAndroid, Platform,  AlertIOS, } from "react-native";
 import api from "../../services/api";
 import styles from "./styles";
 import { ContextTest } from "../../../App";
@@ -27,6 +27,7 @@ const ProfileScreen = (route) => {
     }
     async function getFavoritGenreForUser(userID) {
       await getFavoritGenreFromApi(userID).then((genre) => setFavoriteGenre(genre))
+      setGenreID(genre.genreID);
     }
     getGenres();
     getFavoritGenreForUser(userID);
@@ -42,23 +43,42 @@ const ProfileScreen = (route) => {
     return favGenre;
   }
 
+  async function postChanges(newFavGenreID) {
+    postResponse = await api2.updateFavoriteGenre(userID, newFavGenreID)
+    console.log("PostResonse: " + postResponse)
+    if(postResponse){
+      notifyMessage("Changes saved");
+    }
+  }
+
+  function notifyMessage(message) {
+    if (Platform.OS === 'android') {
+      ToastAndroid.show(message, ToastAndroid.SHORT)
+    } else {
+      AlertIOS.alert(msg);
+    }
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.header}></View>
       <Image style={styles.avatar} source={require('../../../assets/images/blank_profile_picture.png')} />
       <View style={styles.body}>
         <View style={styles.bodyContent}>
-          <TextInput style={styles.textInput} value={favoriteGenre.user.userName} />
+          <TextInput style={styles.textInput} value={favoriteGenre && favoriteGenre.user ? favoriteGenre.user.userName : "Loading..."} />
 
           <DropDownPicker
             style={styles.dropdown}
             open={open}
-            value={favoriteGenre.genreID}
+            value={genreID}
             items={items}
             setOpen={setOpen}
-            setValue={setGenreID} //Post Aufruf --> Update Favorite Genre / Oder Button und dann aktualisieren
+            setValue={setGenreID}
             setItems={setItems}
           />
+
+          <Button title={"Save changes"} titleStyle={styles.buttonText} containerStyle={styles.button} onPress={() => postChanges(favoriteGenre.genreID)} />
+
         </View>
       </View>
     </View>

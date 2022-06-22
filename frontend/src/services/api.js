@@ -8,7 +8,7 @@ export class api extends Component {
     /* /movie
     /user
     /genre/list */
-    url = 'http://192.168.178.73:8080/api';
+    url = 'http://172.16.75.83:8080/api';
 
     // IP-Adresse benutzen von dem der es ausführt
     async getLoginValidation(username, password) {
