@@ -10,32 +10,35 @@ const ProfileScreen = (route) => {
   const things = useContext(ContextTest);
   const userID = things.userID;
   const api2 = new api();
-  console.log("Profile UserID:" + userID); //TODO: remove
+
+  //Dropdown
   const [open, setOpen] = useState(false);
   const [genreID, setGenreID] = useState(null);
-  const [favoriteGenre, setFavoriteGenre] = useState(null);
   const [items, setItems] = useState([]);
+
+  const [favoriteGenre, setFavoriteGenre] = useState([]);
+
 
   useEffect(() => {
     async function getGenres() {
-      await getGenresList().then((items) => setItems(items));
+      await getGenresList().then((items) => setItems(items.map(item => {
+        return { label: item.name, value: item.id };
+      })));
     }
-    async function getFavoriteGenre(userID) {
-      await getFavoriteGenreFromApi(userID).then((favoriteGenre) => setFavoriteGenre(favoriteGenre.genreID));
+    async function getFavoritGenreForUser(userID) {
+      await getFavoritGenreFromApi(userID).then((genre) => setFavoriteGenre(genre))
     }
     getGenres();
-    getFavoriteGenre(userID);
+    getFavoritGenreForUser(userID);
   }, []);
 
   async function getGenresList() {
-    list2 = await api2.getGenres();
-    return list2;
+    genreList = await api2.getGenres();
+    return genreList;
   }
 
-  async function getFavoriteGenreFromApi(userID) {
-    console.log("getFavoriteGenreFromApi UserID:" + userID); //TODO: remove
-    favGenre = await api2.getFavoriteGenre(userID);
-    console.log("Antwort: " + favGenre); //TODO: remove
+  async function getFavoritGenreFromApi(userIdParameter) {
+    favGenre = await api2.getFavoriteGenre(userIdParameter);
     return favGenre;
   }
 
@@ -45,15 +48,15 @@ const ProfileScreen = (route) => {
       <Image style={styles.avatar} source={require('../../../assets/images/blank_profile_picture.png')} />
       <View style={styles.body}>
         <View style={styles.bodyContent}>
-
-          <TextInput style={styles.buttonContainer} value={"favoriteGenre.user.userName"} />
+          <TextInput style={styles.textInput} value={favoriteGenre.user.userName} />
 
           <DropDownPicker
+            style={styles.dropdown}
             open={open}
-            value={genreID} //value auf favoriteGenre.genreID setzen --> wenn Antwort klappt
+            value={favoriteGenre.genreID}
             items={items}
             setOpen={setOpen}
-            setValue={setGenreID} //setFavoriteGenre --> Api Post --> Genre ändern
+            setValue={setGenreID} //Post Aufruf --> Update Favorite Genre / Oder Button und dann aktualisieren
             setItems={setItems}
           />
         </View>

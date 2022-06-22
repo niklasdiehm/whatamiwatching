@@ -1,9 +1,9 @@
-import { StyleSheet} from "react-native";
+import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
-  header:{
-    backgroundColor: "#888888",
-    height:200,
+  header: {
+    backgroundColor: "black",
+    height: 200,
   },
   avatar: {
     width: 130,
@@ -11,30 +11,44 @@ const styles = StyleSheet.create({
     borderRadius: 63,
     borderWidth: 4,
     borderColor: "white",
-    marginBottom:10,
-    alignSelf:'center',
+    marginBottom: 10,
+    alignSelf: 'center',
     position: 'absolute',
-    marginTop:130
+    marginTop: 130,
+    backgroundColor: 'black',
   },
-  body:{
-    marginTop:80,
+  body: {
+    marginTop: 80,
+    backgroundColor: 'black',
+    height: '100 %'
   },
   bodyContent: {
     flex: 1,
     alignItems: 'center',
-    padding:30,
+    flexDirection: 'column',
+    padding: 30,
+    backgroundColor: 'black',
   },
-  buttonContainer: {
-    marginTop:10,
-    height:60,
+  textInput: {
+    marginTop: 10,
+    height: 60,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    marginBottom:20,
-    width:250,
-    borderRadius:10,
-    backgroundColor: "#888888",
+    marginBottom: 20,
+    width: 250,
+    borderRadius: 10,
+    backgroundColor: "white",
     textAlign: 'center'
+  },
+  dropdown: {
+    marginTop: 10,
+    height: 60,
+    width: 250,
+    textAlign: 'center',
+    borderRadius: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
 
