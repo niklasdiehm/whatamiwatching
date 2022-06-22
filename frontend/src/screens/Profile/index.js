@@ -48,7 +48,11 @@ const ProfileScreen = (route) => {
     console.log("PostResonse: " + postResponse)
     if(postResponse){
       notifyMessage("Changes saved");
+      this.setState({dummy: 1})
+    }else{
+      notifyMessage("Changes could not be saved")
     }
+    //reload seite
   }
 
   function notifyMessage(message) {
@@ -77,7 +81,7 @@ const ProfileScreen = (route) => {
             setItems={setItems}
           />
 
-          <Button title={"Save changes"} titleStyle={styles.buttonText} containerStyle={styles.button} onPress={() => postChanges(favoriteGenre.genreID)} />
+          <Button title={"Save changes"} titleStyle={styles.buttonText} containerStyle={styles.button} onPress={() => postChanges(genreID)} />
 
         </View>
       </View>
