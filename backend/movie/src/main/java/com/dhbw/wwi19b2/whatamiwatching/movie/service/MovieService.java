@@ -39,6 +39,8 @@ public class MovieService {
 	}
 	public ResultMovieDetailDTO getMovieDetail(int movieID) {
 		MovieDetail movieDetail = this.movieProxy.getMovieDetails(movieID, apiKey);
+		if (movieDetail == null)
+			return null;
 		List<MovieVideo> movieVideos = this.movieProxy.getMovieVideos(movieID, apiKey).getResults();
 		MovieWatchProvider movieWatchProvider = this.movieProxy.getMovieWatchProviders(movieID, apiKey).getResults().DE;
 		return MovieDetailHelper.buildMovieDetailDTO(movieDetail, movieVideos, movieWatchProvider);
@@ -50,6 +52,8 @@ public class MovieService {
 		}
 		long userID_long = userID.longValue();
 		GenreUser genreUser = this.genreProxy.getFavoriteGenre(userID_long);
+		if (genreUser == null)
+			return this.movieProxy.discoverMovies(apiKey, 1000000).getResults();
 		return this.movieProxy.discoverMovies(apiKey, 100000, genreUser.getGenreID()).getResults();
 	}
 }
