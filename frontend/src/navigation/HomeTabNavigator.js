@@ -19,6 +19,7 @@ const HomeTabNavigator = (props) => {
         name={"MOTD"}
         component={MovieOfTheDayListScreen}
         options={{
+          unmountOnBlur: true,
           tabBarIcon: ({ color }) => (
             <FontAwesome name="calendar" size={25} color={color} />
           ),
