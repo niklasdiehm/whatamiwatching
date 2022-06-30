@@ -32,6 +32,10 @@ const styles = StyleSheet.create({
   textInput: {
     marginTop: 10,
     height: 50,
+<<<<<<< HEAD
+=======
+    textAlignVertical: 'center',
+>>>>>>> 8dbf4e971a35e4d0fa6a14e69234e2547ec32ad9
     flexDirection: 'row',
     paddingBottom: 20,
     width: 350,
@@ -42,12 +46,31 @@ const styles = StyleSheet.create({
   dropdown: {
     marginTop: 10,
     height: 50,
+<<<<<<< HEAD
     flexDirection: 'row',
     paddingBottom: 20,
     width: 350,
     backgroundColor: "white",
     borderRadius: 50,
     textAlign: "center",
+=======
+    width: 350,
+    textAlign: 'center',
+    borderRadius: 50,
+    justifyContent: 'center',
+    alignItems: 'center',
+>>>>>>> 8dbf4e971a35e4d0fa6a14e69234e2547ec32ad9
+  },
+  buttonText: {
+    color: "black",
+    fontSize: 16,
+    fontWeight: "bold",
+  },
+  button: {
+    marginTop: 20,
+    alignItems: 'center',
+    borderRadius: 50,
+    backgroundColor: '#59c9a1',
   },
 });
 

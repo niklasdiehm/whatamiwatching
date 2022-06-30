@@ -13,7 +13,6 @@ const FilmDetailsScreen = ({ route }) => {
 
   const [movie, setMovie] = useState({});
 
-  console.log(movieID)
   useEffect(() => {
     async function getMovies() {
       await getMovieByID().then((items) => setMovie(items));
@@ -55,7 +54,6 @@ const FilmDetailsScreen = ({ route }) => {
 
       <Text style={styles.overview}>{movie.overview}</Text>
       <FlatList horizontal data={movie && movie.watchProviders ? movie.watchProviders : []} keyExtractor={(watchProvider) => watchProvider.provider_id} renderItem={({item}) => {
-        console.log("https://image.tmdb.org/t/p/w500" + item["logo_path"])
         return <Image source={{uri: "https://image.tmdb.org/t/p/w500" + item["logo_path"]}} style={{width: 200, height: 200}} />;
       }} />
     </View>
