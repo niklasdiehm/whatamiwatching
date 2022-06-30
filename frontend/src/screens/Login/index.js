@@ -17,7 +17,6 @@ const LoginDisplay = (props) => {
     const { loginSucessful, userID } = await api2.getLoginValidation(userName, password);
     if (loginSucessful === true) {
       things.userID = userID;
-      console.log(things)
       navigation.navigate("FilmListScreen", { userID: userID });
     }
   }
@@ -31,7 +30,7 @@ const LoginDisplay = (props) => {
       </SafeAreaView>
       <Button title={"Login"} titleStyle={styles.buttonText} containerStyle={styles.button} onPress={() => login(username, password)} />
     </View>
-    
+
   );
 };
 

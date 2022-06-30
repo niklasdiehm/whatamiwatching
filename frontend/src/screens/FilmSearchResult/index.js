@@ -13,9 +13,7 @@ const FilmSearchResultScreen = ({ route }) => {
 
   useEffect(() => {
     async function getMovies() {
-      console.log("useEffect params: " + route.params.genreID, route.params.duration)
       await getMovieForGenreAndDuration(route.params.genreID, route.params.duration).then((items) => setMovies(items));
-      console.log("useEffect: " + items);
     }
     getMovies();
   }, []);
@@ -31,7 +29,6 @@ const FilmSearchResultScreen = ({ route }) => {
         title,
       },
     ] = await api2.getMoviesByGenreAndDuration(genreID, duration);
-    console.log("asyncFunction2: " + list2);
     return list2;
   }
 
