@@ -11,7 +11,7 @@ const MovieSearchScreen = (props) => {
 
   const api2 = new api();
   const navigation = useNavigation();
-  
+
   const [duration, setDuration] = useState("120");
 
   const [open, setOpen] = useState(false);
@@ -21,7 +21,7 @@ const MovieSearchScreen = (props) => {
   useEffect(() => {
     async function getGenres() {
       await getGenresList().then((items) => setItems(items.map(item => {
-        return {label: item.name, value: item.id};
+        return { label: item.name, value: item.id };
       })));
     }
     getGenres();
@@ -36,14 +36,14 @@ const MovieSearchScreen = (props) => {
   return (
     <View style={styles.container}>
       <DropDownPicker
-      open={open}
-      value={genreID}
-      items={items}
-      setOpen={setOpen}
-      setValue={setGenreID}
-      setItems={setItems}
-    />
-    <Text>Duration</Text>
+        open={open}
+        value={genreID}
+        items={items}
+        setOpen={setOpen}
+        setValue={setGenreID}
+        setItems={setItems}
+      />
+      <Text>Duration</Text>
       <TextInput
         keyboardType="numeric"
         style={styles.textInput}
@@ -52,7 +52,7 @@ const MovieSearchScreen = (props) => {
         onChangeText={setDuration}
         placeholder={"Duration in minutes"}
       />
-      <Button title="Search" titleStyle={styles.buttonText} containerStyle={styles.button} onPress={() =>  console.log(genreID)} />
+      <Button title="Search" titleStyle={styles.buttonText} containerStyle={styles.button} onPress={() => navigation.navigate("FilmSearchResultScreen", { genreID: genreID, duration: duration })} />
     </View>
   )
 };

@@ -6,11 +6,13 @@ const styles = StyleSheet.create({
         padding: 16,
     },
     dropdown: {
+        marginTop: 10,
         height: 50,
-        borderColor: 'gray',
-        borderWidth: 0.5,
-        borderRadius: 8,
-        paddingHorizontal: 8,
+        width: 350,
+        textAlign: 'center',
+        borderRadius: 50,
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     icon: {
         marginRight: 5,

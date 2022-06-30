@@ -1,0 +1,60 @@
+import { FlatList, Text, TouchableOpacity, View } from "react-native";
+import React, { useEffect, useState } from "react";
+import api from "../../services/api";
+import styles from "./styles";
+import { useNavigation } from "@react-navigation/native";
+
+const FilmSearchResultScreen = ({ route }) => {
+  const navigation = useNavigation();
+  const api2 = new api();
+
+  const [movies, setMovies] = useState([]);
+
+
+  useEffect(() => {
+    async function getMovies() {
+      console.log("useEffect params: " + route.params.genreID, route.params.duration)
+      await getMovieForGenreAndDuration(route.params.genreID, route.params.duration).then((items) => setMovies(items));
+      console.log("useEffect: " + items);
+    }
+    getMovies();
+  }, []);
+
+  async function getMovieForGenreAndDuration(genreID, duration) {
+    list2 = [
+      {
+        adults,
+        genre_ids: [],
+        id,
+        overview,
+        release_date,
+        title,
+      },
+    ] = await api2.getMoviesByGenreAndDuration(genreID, duration);
+    console.log("asyncFunction2: " + list2);
+    return list2;
+  }
+
+  return (
+    <View style={styles.container}>
+      <Text style={styles.title}>Movies of the Day:</Text>
+      {
+        <FlatList
+          data={movies}
+          style={styles.list}
+          keyExtractor={(item) => item.id.toString()}
+          renderItem={({ item }) => {
+            return <TouchableOpacity onPress={() => navigation.navigate("FilmDetails", { movieID: item.id })}>
+              <View>
+                <Text style={styles.item}>{item.title}</Text>
+              </View>
+
+            </TouchableOpacity>;
+          }}
+        />
+      }
+    </View>
+  );
+};
+
+export default FilmSearchResultScreen;

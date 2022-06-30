@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { View, Button, Image, TextInput, ToastAndroid, Platform,  AlertIOS, } from "react-native";
+import { View, Button, Image, TextInput, ToastAndroid, Platform, AlertIOS, } from "react-native";
 import api from "../../services/api";
 import styles from "./styles";
 import { ContextTest } from "../../../App";
@@ -15,7 +15,6 @@ const ProfileScreen = (route) => {
   const [open, setOpen] = useState(false);
   const [genreID, setGenreID] = useState(null);
   const [items, setItems] = useState([]);
-
   const [favoriteGenre, setFavoriteGenre] = useState([]);
 
 
@@ -27,6 +26,8 @@ const ProfileScreen = (route) => {
     }
     async function getFavoritGenreForUser(userID) {
       await getFavoritGenreFromApi(userID).then((genre) => setFavoriteGenre(genre))
+      console.log(genre);
+      console.log(genre.genreID);
       setGenreID(genre.genreID);
     }
     getGenres();
@@ -40,16 +41,16 @@ const ProfileScreen = (route) => {
 
   async function getFavoritGenreFromApi(userIdParameter) {
     favGenre = await api2.getFavoriteGenre(userIdParameter);
+    console.log(favGenre);
     return favGenre;
   }
 
   async function postChanges(newFavGenreID) {
     postResponse = await api2.updateFavoriteGenre(userID, newFavGenreID)
     console.log("PostResonse: " + postResponse)
-    if(postResponse){
+    if (postResponse) {
       notifyMessage("Changes saved");
-      this.setState({dummy: 1})
-    }else{
+    } else {
       notifyMessage("Changes could not be saved")
     }
     //reload seite

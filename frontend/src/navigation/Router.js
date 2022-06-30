@@ -4,20 +4,21 @@ import { createStackNavigator } from "@react-navigation/stack";
 import LoginDisplay from "../screens/Login";
 import HomeTabNavigator from "./HomeTabNavigator.js";
 import FilmDetailsScreen from "../screens/FilmDetails";
+import FilmSearchResultScreen from "../screens/FilmSearchResult";
 const Stack = createStackNavigator();
 
 const Router = (props) => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        
+
         <Stack.Screen
           name={"Login"}
           component={LoginDisplay}
           options={{
             title: "Login",
             headerShown: false
-          }}/>
+          }} />
 
         <Stack.Screen
           name={"FilmListScreen"}
@@ -39,6 +40,15 @@ const Router = (props) => {
             }
           }}
         />
+
+        <Stack.Screen
+          name={"FilmSearchResultScreen"}
+          component={FilmSearchResultScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+
       </Stack.Navigator>
     </NavigationContainer>
   );
