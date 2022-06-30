@@ -42,6 +42,7 @@ const MovieSearchScreen = (props) => {
         setOpen={setOpen}
         setValue={setGenreID}
         setItems={setItems}
+        autoScroll={true}
       />
       <Text>Duration</Text>
       <TextInput

@@ -1,5 +1,5 @@
 import React, { Component, useState, useEffect } from "react";
-import { View, Text, Image, FlatList } from "react-native";
+import { View, Text, Image, FlatList, ScrollView } from "react-native";
 import styles from "./styles";
 import YoutubePlayer from 'react-native-youtube-iframe';
 import Stars from 'react-native-stars';
@@ -26,15 +26,15 @@ const FilmDetailsScreen = ({ route }) => {
     return movieResponse;
   }
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       {movie && movie.video ?
         <YoutubePlayer
           style={styles.player}
           height={300}
           videoId={movie.video.key}
-          />
-      : null}
-      
+        />
+        : null}
+
 
       <Text style={styles.movieTitle}>{movie.title}</Text>
 
@@ -53,10 +53,10 @@ const FilmDetailsScreen = ({ route }) => {
       </View>
 
       <Text style={styles.overview}>{movie.overview}</Text>
-      <FlatList horizontal data={movie && movie.watchProviders ? movie.watchProviders : []} keyExtractor={(watchProvider) => watchProvider.provider_id} renderItem={({item}) => {
-        return <Image source={{uri: "https://image.tmdb.org/t/p/w500" + item["logo_path"]}} style={{width: 200, height: 200}} />;
+      <FlatList horizontal data={movie && movie.watchProviders ? movie.watchProviders : []} keyExtractor={(watchProvider) => watchProvider.provider_id} renderItem={({ item }) => {
+        return <Image source={{ uri: "https://image.tmdb.org/t/p/w500" + item["logo_path"] }} style={{ width: 200, height: 200 }} />;
       }} />
-    </View>
+    </ScrollView>
   )
 };
 

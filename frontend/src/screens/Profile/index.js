@@ -26,9 +26,7 @@ const ProfileScreen = (route) => {
     }
     async function getFavoritGenreForUser(userID) {
       await getFavoritGenreFromApi(userID).then((genre) => setFavoriteGenre(genre))
-      console.log(genre);
-      console.log(genre.genreID);
-      setGenreID(genre.genreID);
+      setGenreID(favoriteGenre.genreID);
     }
     getGenres();
     getFavoritGenreForUser(userID);
@@ -41,13 +39,11 @@ const ProfileScreen = (route) => {
 
   async function getFavoritGenreFromApi(userIdParameter) {
     favGenre = await api2.getFavoriteGenre(userIdParameter);
-    console.log(favGenre);
     return favGenre;
   }
 
   async function postChanges(newFavGenreID) {
     postResponse = await api2.updateFavoriteGenre(userID, newFavGenreID)
-    console.log("PostResonse: " + postResponse)
     if (postResponse) {
       notifyMessage("Changes saved");
     } else {
