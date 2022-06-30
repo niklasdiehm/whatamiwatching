@@ -2,11 +2,21 @@ import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: 'white',
+        height: "100%",
+        backgroundColor: "black",
         padding: 16,
     },
+    input: {
+        width: "90%",
+    },
+    label: {
+        backgroundColor: "white",
+        borderRadius: 50,
+        height: 20
+    },
     dropdown: {
-        marginTop: 10,
+        marginTop: 50,
+        marginBottom: 50,
         height: 50,
         width: 350,
         textAlign: 'center',
@@ -14,31 +24,26 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     },
-    icon: {
-        marginRight: 5,
+    textInput: {
+        marginTop: 10,
+        height: 50,
+        flexDirection: 'row',
+        paddingBottom: 20,
+        width: 350,
+        backgroundColor: "white",
+        borderRadius: 50,
+        textAlign: "center",
     },
-    label: {
-        position: 'absolute',
-        backgroundColor: 'white',
-        left: 22,
-        top: 8,
-        zIndex: 999,
-        paddingHorizontal: 8,
-        fontSize: 14,
-    },
-    placeholderStyle: {
+    buttonText: {
+        color: "black",
         fontSize: 16,
+        fontWeight: "bold",
     },
-    selectedTextStyle: {
-        fontSize: 16,
-    },
-    iconStyle: {
-        width: 20,
-        height: 20,
-    },
-    inputSearchStyle: {
-        height: 40,
-        fontSize: 16,
+    button: {
+        marginTop: 20,
+        alignItems: 'center',
+        borderRadius: 5,
+        backgroundColor: '#59c9a1',
     },
 });
 

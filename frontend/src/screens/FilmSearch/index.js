@@ -35,24 +35,26 @@ const MovieSearchScreen = (props) => {
 
   return (
     <View style={styles.container}>
-      <DropDownPicker
-        open={open}
-        value={genreID}
-        items={items}
-        setOpen={setOpen}
-        setValue={setGenreID}
-        setItems={setItems}
-        autoScroll={true}
-      />
-      <Text>Duration</Text>
-      <TextInput
-        keyboardType="numeric"
-        style={styles.textInput}
-        returnKeyType="done"
-        value={duration}
-        onChangeText={setDuration}
-        placeholder={"Duration in minutes"}
-      />
+      <View style={styles.inputs}>
+        <DropDownPicker
+          open={open}
+          value={genreID}
+          items={items}
+          setOpen={setOpen}
+          setValue={setGenreID}
+          setItems={setItems}
+          autoScroll={true}
+        />
+        <Text style={styles.label}>Duration</Text>
+        <TextInput
+          keyboardType="numeric"
+          style={styles.textInput}
+          returnKeyType="done"
+          value={duration}
+          onChangeText={setDuration}
+          placeholder={"Duration in minutes"}
+        />
+      </View>
       <Button title="Search" titleStyle={styles.buttonText} containerStyle={styles.button} onPress={() => navigation.navigate("FilmSearchResultScreen", { genreID: genreID, duration: duration })} />
     </View>
   )
