@@ -25,8 +25,10 @@ const ProfileScreen = (route) => {
       })));
     }
     async function getFavoritGenreForUser(userID) {
-      await getFavoritGenreFromApi(userID).then((genre) => setFavoriteGenre(genre))
-      setGenreID(favoriteGenre.genreID);
+      await getFavoritGenreFromApi(userID).then((genre) => {
+        setFavoriteGenre(genre)
+        setGenreID(genre.genreID)
+      })
     }
     getGenres();
     getFavoritGenreForUser(userID);
