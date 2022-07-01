@@ -9,7 +9,7 @@ import com.dhbw.wwi19b2.whatamiwatching.movie.dto.MovieVideoDTO;
 import com.dhbw.wwi19b2.whatamiwatching.movie.dto.MovieWatchProviderDTO;
 import com.dhbw.wwi19b2.whatamiwatching.movie.entity.MovieDetail;
 
-@FeignClient(name = "MovieDBWebService", url="https://api.themoviedb.org/3/")
+@FeignClient(name = "MovieDBWebService", url="https://api.themoviedb.org/3/", fallbackFactory = MovieProxyFallbackFactory.class)
 public interface MovieProxy {
 	
 	@GetMapping(path = "/discover/movie?api_key={apiKey}&language=en-US&sort_by=popularity.desc&page=1&with_runtime.lte={runtime}")
