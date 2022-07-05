@@ -57,8 +57,6 @@ const ProfileScreen = (route) => {
   function notifyMessage(message) {
     if (Platform.OS === 'android') {
       ToastAndroid.show(message, ToastAndroid.SHORT)
-    } else {
-      AlertIOS.alert(msg);
     }
   }
 
