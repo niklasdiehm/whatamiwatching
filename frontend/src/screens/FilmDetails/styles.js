@@ -44,6 +44,11 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: "white",
   },
+  images: {
+    width: 150,
+    height: 150,
+    margin: 5,
+  },
 });
 
 export default styles;

@@ -29,6 +29,7 @@ export class api extends Component {
     };
 
     async getMovieByID(movieID) {
+    console.log(movieID)
         try {
             const response = await axios.get(this.url + '/movie/movie?movieID=' + movieID);
             return response.data;

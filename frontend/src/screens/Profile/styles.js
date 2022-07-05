@@ -36,22 +36,32 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   textInput: {
-    marginBottom: 50,
+    marginBottom: 10,
     height: 50,
     backgroundColor: "white",
     borderRadius: 10,
-    paddingLeft: 10
-   },
-   buttonText: {
+    paddingLeft: 10,
+
+  },
+  buttonText: {
     color: "black",
     fontSize: 16,
     fontWeight: "bold",
   },
   button: {
-    alignItems: 'center',
     borderRadius: 5,
     backgroundColor: '#59c9a1',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: "50%"
   },
+  buttonContainer: {
+    width: "50%",
+    marginLeft: "25%",
+    marginRight: "25%",
+    alignItems: 'center',
+    justifyContent: 'center',
+  }
 });
 
 export default styles;

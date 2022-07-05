@@ -63,8 +63,8 @@ const ProfileScreen = (route) => {
   return (
     <View style={styles.container}>
       <View style={styles.inputs}>
-          <Text style={styles.label}>user name</Text>
-          <TextInput style={styles.textInput} editable={false} value={favoriteGenre && favoriteGenre.user ? favoriteGenre.user.userName : "Loading..."} />
+          <Text style={styles.label}>Username</Text>
+          <TextInput style={styles.textInput} disabled={true}  showSoftInputOnFocus={false} value={favoriteGenre && favoriteGenre.user ? favoriteGenre.user.userName : "Loading..."} />
 
           <Text style={styles.label}>favorite genre</Text>
           <DropDownPicker
@@ -76,9 +76,9 @@ const ProfileScreen = (route) => {
             setValue={setGenreID}
             setItems={setItems}
           />
-
-          <Button title={"Save changes"} titleStyle={styles.buttonText} containerStyle={styles.button} onPress={() => postChanges(genreID)} />
-
+          <View style={styles.buttonContainer}>
+            <Button title={"Save changes"} titleStyle={styles.buttonText} containerStyle={styles.button} onPress={() => postChanges(genreID)} />
+          </View>
       </View>
     </View>
   )
