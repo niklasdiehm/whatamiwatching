@@ -18,7 +18,6 @@ const FilmDetailsScreen = ({ route }) => {
       await getMovieByID().then((items) => setMovie(items));
     }
     getMovies();
-
   }, []);
 
   async function getMovieByID() {
@@ -34,9 +33,6 @@ const FilmDetailsScreen = ({ route }) => {
           videoId={movie.video.key}
         />
         : null}
-
-
-      <Text style={styles.movieTitle}>{movie.title}</Text>
 
       <View style={styles.ratingBox}>
         <Stars

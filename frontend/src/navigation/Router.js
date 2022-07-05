@@ -35,14 +35,9 @@ const Router = (props) => {
         <Stack.Screen
           name={"FilmDetails"}
           component={FilmDetailsScreen}
-          options={{
-            title: things.movieTitle,
-            headerBackTitle: "Back",
-            headerTintColor: "white",
-            headerStyle: {
-              backgroundColor: "black"
+          options={
+            ({ route }) => ({ title: route.params.title, headerBackTitle: "Back", headerTintColor: "white", headerStyle: { backgroundColor: "black"} })
             }
-          }}
         />
 
         <Stack.Screen
