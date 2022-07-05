@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.dhbw.wwi19b2.whatamiwatching.genre.dto.GenreDTO;
 
-@FeignClient(name = "MovieDBWebService", url="https://api.themoviedb.org/3/")
+@FeignClient(name = "MovieDBWebService", url="https://api.themoviedb.org/3/", fallbackFactory = TMDBProxyFallbackFactory.class)
 public interface TMDBProxy {
 
 	@GetMapping(path= "/genre/movie/list?api_key={apiKey}")
