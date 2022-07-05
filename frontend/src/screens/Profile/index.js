@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { View, Button, Image, TextInput, ToastAndroid, Platform, AlertIOS, } from "react-native";
+import { View, Button, Image, TextInput, ToastAndroid, Platform, AlertIOS, Text } from "react-native";
 import api from "../../services/api";
 import styles from "./styles";
 import { ContextTest } from "../../../App";
@@ -62,12 +62,11 @@ const ProfileScreen = (route) => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.header}></View>
-      <Image style={styles.avatar} source={require('../../../assets/images/blank_profile_picture.png')} />
-      <View style={styles.body}>
-        <View style={styles.bodyContent}>
-          <TextInput style={styles.textInput} value={favoriteGenre && favoriteGenre.user ? favoriteGenre.user.userName : "Loading..."} />
+      <View style={styles.inputs}>
+          <Text style={styles.label}>user name</Text>
+          <TextInput style={styles.textInput} editable={false} value={favoriteGenre && favoriteGenre.user ? favoriteGenre.user.userName : "Loading..."} />
 
+          <Text style={styles.label}>favorite genre</Text>
           <DropDownPicker
             style={styles.dropdown}
             open={open}
@@ -80,7 +79,6 @@ const ProfileScreen = (route) => {
 
           <Button title={"Save changes"} titleStyle={styles.buttonText} containerStyle={styles.button} onPress={() => postChanges(genreID)} />
 
-        </View>
       </View>
     </View>
   )

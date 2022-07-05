@@ -15,13 +15,8 @@ const styles = StyleSheet.create({
     marginVertical: 10,
   },
   list: {
+    marginTop: 50,
     padding: 25
-  },
-  title: {
-    color: "white",
-    padding: 10,
-    paddingTop: 25,
-    fontSize: 30,
   },
 });
 

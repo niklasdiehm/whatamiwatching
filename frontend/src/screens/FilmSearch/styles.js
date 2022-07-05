@@ -3,44 +3,37 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
     container: {
         height: "100%",
+        alignItems: "center",
+        justifyContent: "center",
         backgroundColor: "black",
-        padding: 16,
     },
-    input: {
+    inputs: {
         width: "90%",
     },
     label: {
-        backgroundColor: "white",
-        borderRadius: 50,
-        height: 20
+        color: 'white',
+        fontSize: 20,
+        marginTop: 5,
+        marginBottom: 10,
     },
     dropdown: {
-        marginTop: 50,
+        marginTop: 10,
         marginBottom: 50,
         height: 50,
-        width: 350,
-        textAlign: 'center',
-        borderRadius: 50,
-        justifyContent: 'center',
-        alignItems: 'center',
+        borderRadius: 10,
     },
     textInput: {
-        marginTop: 10,
         height: 50,
-        flexDirection: 'row',
-        paddingBottom: 20,
-        width: 350,
         backgroundColor: "white",
-        borderRadius: 50,
-        textAlign: "center",
+        borderRadius: 10,
+        paddingLeft: 10
     },
     buttonText: {
         color: "black",
         fontSize: 16,
         fontWeight: "bold",
-    },
+      },
     button: {
-        marginTop: 20,
         alignItems: 'center',
         borderRadius: 5,
         backgroundColor: '#59c9a1',

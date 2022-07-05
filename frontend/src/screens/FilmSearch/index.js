@@ -36,6 +36,7 @@ const MovieSearchScreen = (props) => {
   return (
     <View style={styles.container}>
       <View style={styles.inputs}>
+      <Text style={styles.label}>Genre</Text>
         <DropDownPicker
           open={open}
           value={genreID}

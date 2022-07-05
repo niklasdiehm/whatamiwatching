@@ -4,7 +4,7 @@ import { Component } from 'react';
 export class api extends Component {
 
 
-    url = 'http://192.168.0.202:8080/api';
+    url = 'http://192.168.178.73:8080/api';
 
     // IP-Adresse benutzen von dem der es ausführt
     async getLoginValidation(username, password) {

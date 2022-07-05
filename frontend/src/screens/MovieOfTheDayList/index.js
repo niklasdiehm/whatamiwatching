@@ -37,7 +37,6 @@ const MovieOfTheDayListScreen = (route) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Movies of the Day:</Text>
       {
         <FlatList
           data={movies}

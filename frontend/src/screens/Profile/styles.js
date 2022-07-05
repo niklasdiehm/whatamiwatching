@@ -1,22 +1,12 @@
 import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
-  header: {
-    backgroundColor: "black",
-    height: 200,
-  },
-  avatar: {
-    width: 130,
-    height: 130,
-    borderRadius: 63,
-    borderWidth: 4,
-    borderColor: "white",
-    marginBottom: 10,
-    alignSelf: 'center',
-    position: 'absolute',
-    marginTop: 130,
-    backgroundColor: 'black',
-  },
+ container: {
+   height: "100%",
+   alignItems: "center",
+   justifyContent: "center",
+   backgroundColor: "black",
+ },
   body: {
     marginTop: 80,
     backgroundColor: 'black',
@@ -29,35 +19,37 @@ const styles = StyleSheet.create({
     padding: 30,
     backgroundColor: 'black',
   },
-  textInput: {
-    marginTop: 10,
-    height: 50,
-    textAlignVertical: 'center',
-    flexDirection: 'row',
-    paddingBottom: 20,
-    width: 350,
-    backgroundColor: "white",
-    borderRadius: 50,
-    textAlign: "center",
+  inputs: {
+    width: "90%",
+    backgroundColor: 'black',
+  },
+  label: {
+    color: 'white',
+    fontSize: 20,
+    marginTop: 5,
+    marginBottom: 10,
   },
   dropdown: {
     marginTop: 10,
+    marginBottom: 50,
     height: 50,
-    width: 350,
-    textAlign: 'center',
-    borderRadius: 50,
-    justifyContent: 'center',
-    alignItems: 'center',
+    borderRadius: 10,
   },
-  buttonText: {
+  textInput: {
+    marginBottom: 50,
+    height: 50,
+    backgroundColor: "white",
+    borderRadius: 10,
+    paddingLeft: 10
+   },
+   buttonText: {
     color: "black",
     fontSize: 16,
     fontWeight: "bold",
   },
   button: {
-    marginTop: 20,
     alignItems: 'center',
-    borderRadius: 50,
+    borderRadius: 5,
     backgroundColor: '#59c9a1',
   },
 });
