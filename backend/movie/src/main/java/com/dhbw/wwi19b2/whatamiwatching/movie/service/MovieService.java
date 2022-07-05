@@ -1,9 +1,13 @@
 package com.dhbw.wwi19b2.whatamiwatching.movie.service;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.dhbw.wwi19b2.whatamiwatching.movie.dto.MovieVideoDTO;
+import com.dhbw.wwi19b2.whatamiwatching.movie.dto.MovieWatchProviderDTO;
 import com.dhbw.wwi19b2.whatamiwatching.movie.dto.ResultMovieDetailDTO;
 import com.dhbw.wwi19b2.whatamiwatching.movie.entity.GenreUser;
 import com.dhbw.wwi19b2.whatamiwatching.movie.entity.Movie;
@@ -41,8 +45,10 @@ public class MovieService {
 		MovieDetail movieDetail = this.movieProxy.getMovieDetails(movieID, apiKey);
 		if (movieDetail == null)
 			return null;
-		List<MovieVideo> movieVideos = this.movieProxy.getMovieVideos(movieID, apiKey).getResults();
-		MovieWatchProvider movieWatchProvider = this.movieProxy.getMovieWatchProviders(movieID, apiKey).getResults().DE;
+		MovieVideoDTO movieVideo = this.movieProxy.getMovieVideos(movieID, apiKey);
+		List<MovieVideo> movieVideos = movieVideo != null ? movieVideo.getResults() : new LinkedList<MovieVideo>();
+		MovieWatchProviderDTO movieWatchProviders = this.movieProxy.getMovieWatchProviders(movieID, apiKey);
+		MovieWatchProvider movieWatchProvider = movieWatchProviders != null ? movieWatchProviders.getResults().DE : new MovieWatchProvider();
 		return MovieDetailHelper.buildMovieDetailDTO(movieDetail, movieVideos, movieWatchProvider);
 	}
 	

@@ -1,8 +1,6 @@
 services:
   database:
     image: mysql:8.0
-    ports:
-        - "3306:3306"
     environment:
         MYSQL_ROOT_USER: root
         MYSQL_ROOT_PASSWORD: secret
@@ -13,8 +11,6 @@ services:
   nameserver:
     build: ./nameserver
     container_name: nameserver
-    ports:
-      - "8761:8761"
   admin:
     build: ./admin
     container_name: admin
@@ -40,8 +36,6 @@ services:
       - "admin"
       - "api-gateway"
       - "database"
-    ports:
-      - "8081:8081"
     restart: unless-stopped
   movie:
     build: ./movie
@@ -50,8 +44,6 @@ services:
       - "nameserver"
       - "admin"
       - "api-gateway"
-    ports:
-      - "8082:8082"
     restart: unless-stopped
   genre:
     build: ./genre
@@ -61,6 +53,4 @@ services:
       - "admin"
       - "api-gateway"
       - "database"
-    ports:
-      - "8083:8083"
     restart: unless-stopped
