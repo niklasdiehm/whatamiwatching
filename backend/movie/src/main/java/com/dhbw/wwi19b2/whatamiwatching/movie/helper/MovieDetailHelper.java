@@ -1,5 +1,6 @@
 package com.dhbw.wwi19b2.whatamiwatching.movie.helper;
 
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -30,6 +31,8 @@ public class MovieDetailHelper {
 		if (movieWatchProvider.rent == null) movieWatchProvider.rent = new LinkedList<MovieWatchProviderDetails>();
 		List<MovieWatchProviderDetails> providers = Stream.concat(movieWatchProvider.flatrate.stream(), movieWatchProvider.buy.stream()).collect(Collectors.toList());
 		providers = Stream.concat(providers.stream(), movieWatchProvider.rent.stream()).collect(Collectors.toList());
+		HashSet<Integer> hashSet = new HashSet<>();
+		providers.removeIf(e -> !hashSet.add(e.provider_id));
 		resultMovieDTO.setWatchProviders(providers);
 		if (movieVideos == null || movieVideos.isEmpty()) {
 			resultMovieDTO.setVideo(null);
