@@ -1,14 +1,10 @@
-// https://blog.logrocket.com/using-axios-react-native-manage-api-requests/
 import axios from 'axios';
 import { Component } from 'react';
 
 export class api extends Component {
 
 
-    /* /movie
-    /user
-    /genre/list */
-    url = 'http://192.168.178.73:8080/api';
+    url = 'http://192.168.0.202:8080/api';
 
     // IP-Adresse benutzen von dem der es ausführt
     async getLoginValidation(username, password) {
@@ -33,7 +29,6 @@ export class api extends Component {
     };
 
     async getMovieByID(movieID) {
-        console.log(movieID)
         try {
             const response = await axios.get(this.url + '/movie/movie?movieID=' + movieID);
             return response.data;
@@ -83,13 +78,11 @@ export class api extends Component {
     }
     */
     async getMoviesByGenreAndDuration(genreID, duration) {
-        console.log("params: " + genreID, duration)
         const response = await axios.get(this.url + "/movie/movies/discover?genreID=" + genreID + "&runtime=" + duration);
         if (response.status !== 200) {
             console.log("Fehler")
         }
         else {
-            console.log("Api: " + response.data)
             return response.data;
         }
     }

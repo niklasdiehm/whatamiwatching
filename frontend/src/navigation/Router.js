@@ -1,13 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import LoginDisplay from "../screens/Login";
 import HomeTabNavigator from "./HomeTabNavigator.js";
 import FilmDetailsScreen from "../screens/FilmDetails";
 import FilmSearchResultScreen from "../screens/FilmSearchResult";
+import { ContextTest } from "../../App";
+
 const Stack = createStackNavigator();
 
 const Router = (props) => {
+  const things = useContext(ContextTest);
+
   return (
     <NavigationContainer>
       <Stack.Navigator>
@@ -32,7 +36,7 @@ const Router = (props) => {
           name={"FilmDetails"}
           component={FilmDetailsScreen}
           options={{
-            title: "",
+            title: things.movieTitle,
             headerBackTitle: "Back",
             headerTintColor: "white",
             headerStyle: {
@@ -45,7 +49,12 @@ const Router = (props) => {
           name={"FilmSearchResultScreen"}
           component={FilmSearchResultScreen}
           options={{
-            headerShown: false,
+            title: "Search Results",
+            headerBackTitle: "Back",
+            headerTintColor: "white",
+            headerStyle: {
+              backgroundColor: "black"
+            }
           }}
         />
 

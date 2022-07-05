@@ -44,11 +44,10 @@ const MovieOfTheDayListScreen = (route) => {
           style={styles.list}
           keyExtractor={(item) => item.id.toString()}
           renderItem={({ item }) => {
-            return <TouchableOpacity onPress={() => navigation.navigate("FilmDetails", { movieID: item.id })}>
+            return <TouchableOpacity onPress={() => { navigation.navigate("FilmDetails", { movieID: item.id }); things.movieTitle = item.title }}>
               <View>
                 <Text style={styles.item}>{item.title}</Text>
               </View>
-
             </TouchableOpacity>;
           }}
         />

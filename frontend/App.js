@@ -6,7 +6,7 @@ import Router from "./src/navigation/Router";
 
 export default function App() {
   return (
-    <ContextTest.Provider value={{userID: null}}>
+    <ContextTest.Provider value={{userID: null, movieTitle: ""}}>
       <StatusBar barStyle="dark-content" />
       <Router />
     </ContextTest.Provider>
@@ -15,7 +15,8 @@ export default function App() {
 
 export const ContextTest = React.createContext(
   {
-    userID: null
+    userID: null,
+    movieTitle: null
   }
 );
 export const ContextTestProvider = ContextTest.Provider

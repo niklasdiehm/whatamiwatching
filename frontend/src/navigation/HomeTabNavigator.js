@@ -30,6 +30,7 @@ const HomeTabNavigator = (props) => {
         name={"Search Movie"}
         component={MovieSearchScreen}
         options={{
+          unmountOnBlur: true,
           tabBarIcon: ({ color }) => (
             <FontAwesome name="question" size={25} color={color} />
           ),
@@ -39,6 +40,7 @@ const HomeTabNavigator = (props) => {
         name={"Profile"}
         component={ProfileScreen}
         options={{
+          unmountOnBlur: true,
           tabBarIcon: ({ color }) => (
             <FontAwesome name="user" size={25} color={color} />
           ),

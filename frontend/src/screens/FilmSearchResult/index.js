@@ -1,15 +1,16 @@
 import { FlatList, Text, TouchableOpacity, View } from "react-native";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import api from "../../services/api";
 import styles from "./styles";
 import { useNavigation } from "@react-navigation/native";
+import { ContextTest } from "../../../App";
 
 const FilmSearchResultScreen = ({ route }) => {
   const navigation = useNavigation();
   const api2 = new api();
 
   const [movies, setMovies] = useState([]);
-
+  const things = useContext(ContextTest);
 
   useEffect(() => {
     async function getMovies() {
@@ -34,14 +35,13 @@ const FilmSearchResultScreen = ({ route }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Movies of the Day:</Text>
       {
         <FlatList
           data={movies}
           style={styles.list}
           keyExtractor={(item) => item.id.toString()}
           renderItem={({ item }) => {
-            return <TouchableOpacity onPress={() => navigation.navigate("FilmDetails", { movieID: item.id })}>
+            return <TouchableOpacity onPress={() => { navigation.navigate("FilmDetails", { movieID: item.id }); things.movieTitle = item.title}}>
               <View>
                 <Text style={styles.item}>{item.title}</Text>
               </View>

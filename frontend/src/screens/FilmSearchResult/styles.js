@@ -14,15 +14,7 @@ const styles = StyleSheet.create({
     color: "white",
     marginVertical: 10,
   },
-  list: {
-    padding: 25
-  },
-  title: {
-    color: "white",
-    padding: 10,
-    paddingTop: 25,
-    fontSize: 30,
-  },
+
 });
 
 export default styles;
