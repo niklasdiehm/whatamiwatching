@@ -1,20 +1,21 @@
 import axios from 'axios';
 import { Component } from 'react';
+import { Alert } from 'react-native';
 
 export class api extends Component {
 
-
+    // IP-Adresse benutzen von dem der es ausführt
     url = 'http://192.168.178.73:8080/api';
 
-    // IP-Adresse benutzen von dem der es ausführt
     async getLoginValidation(username, password) {
-        const response = await axios.get(this.url + '/user/login?username=' + username + '&password=' + password);
-        if (response.status !== 200) {
-            console.log("Fehler")
-        }
-        else {
-            return response.data;
-        }
+        const response = await axios.get(this.url + '/user/login?username=' + username + '&password=' + password)
+            .catch(function (error) {
+                if (error.response || error.request) {
+                    alert("Wrong username or password!")
+                }
+                return;
+            })
+        return response.data;
     };
 
     async getMovieOfTheDay(userID) {
@@ -29,7 +30,6 @@ export class api extends Component {
     };
 
     async getMovieByID(movieID) {
-    console.log(movieID)
         try {
             const response = await axios.get(this.url + '/movie/movie?movieID=' + movieID);
             return response.data;
@@ -69,15 +69,7 @@ export class api extends Component {
             return response.data;
         }
     }
-    /*
-    getMoviesByGenre(genreID) {
-        axios
-            .get(baseURL + "/movie/" + genreID)
-            .then((response) => {
-                return response;
-            })
-    }
-    */
+
     async getMoviesByGenreAndDuration(genreID, duration) {
         const response = await axios.get(this.url + "/movie/movies/discover?genreID=" + genreID + "&runtime=" + duration);
         if (response.status !== 200) {
@@ -87,8 +79,6 @@ export class api extends Component {
             return response.data;
         }
     }
-
-
 }
 
 export default api;

@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { View, TextInput, Text, Button } from "react-native";
+import { Alert, View, TextInput, Text, Button } from "react-native";
 import styles from "./styles";
 import { useNavigation } from "@react-navigation/native";
 import DropDownPicker from 'react-native-dropdown-picker';
 import api from "../../services/api";
-
 
 
 const MovieSearchScreen = (props) => {
@@ -32,11 +31,19 @@ const MovieSearchScreen = (props) => {
     return list2;
   }
 
+  function onSearchClick(genreID, duration) {
+    if (genreID) {
+      navigation.navigate("FilmSearchResultScreen", { genreID: genreID, duration: duration });
+    }
+    else {
+      alert('Please select a genre!');
+    }
+  }
 
   return (
     <View style={styles.container}>
       <View style={styles.inputs}>
-      <Text style={styles.label}>Genre</Text>
+        <Text style={styles.label}>Genre</Text>
         <DropDownPicker
           open={open}
           value={genreID}
@@ -56,7 +63,7 @@ const MovieSearchScreen = (props) => {
           placeholder={"Duration in minutes"}
         />
       </View>
-      <Button title="Search" titleStyle={styles.buttonText} containerStyle={styles.button} onPress={() => navigation.navigate("FilmSearchResultScreen", { genreID: genreID, duration: duration })} />
+      <Button title="Search" titleStyle={styles.buttonText} containerStyle={styles.button} onPress={() => onSearchClick(genreID, duration)} />
     </View>
   )
 };

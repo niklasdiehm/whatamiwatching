@@ -7,7 +7,6 @@ import { useNavigation } from "@react-navigation/native";
 const FilmSearchResultScreen = ({ route }) => {
   const navigation = useNavigation();
   const api2 = new api();
-
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {

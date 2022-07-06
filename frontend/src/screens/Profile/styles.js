@@ -1,12 +1,12 @@
 import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
- container: {
-   height: "100%",
-   alignItems: "center",
-   justifyContent: "center",
-   backgroundColor: "black",
- },
+  container: {
+    height: "100%",
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "black",
+  },
   body: {
     marginTop: 80,
     backgroundColor: 'black',
