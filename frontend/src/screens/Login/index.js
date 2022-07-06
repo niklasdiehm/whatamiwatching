@@ -1,5 +1,5 @@
 import { React, useState, useContext } from "react";
-import { Alert, View, SafeAreaView, TextInput } from "react-native";
+import { Alert, View, SafeAreaView, TextInput, LogBox } from "react-native";
 import { Image, Button, } from '@rneui/base';
 import { useNavigation } from "@react-navigation/native";
 import styles from "./styles";
@@ -7,6 +7,8 @@ import api from "./../../services/api";
 import { ContextTest } from "../../../App";
 
 const LoginDisplay = (props) => {
+    LogBox.ignoreAllLogs();
+
   const [username, onChangeUsername] = useState('')
   const [password, onChangePassword] = useState('')
   const navigation = useNavigation();
