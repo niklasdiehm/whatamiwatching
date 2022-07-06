@@ -1,5 +1,5 @@
 import { React, useState, useContext } from "react";
-import { View, SafeAreaView, TextInput } from "react-native";
+import { Alert, View, SafeAreaView, TextInput } from "react-native";
 import { Image, Button, } from '@rneui/base';
 import { useNavigation } from "@react-navigation/native";
 import styles from "./styles";
@@ -18,6 +18,8 @@ const LoginDisplay = (props) => {
     if (loginSucessful === true) {
       things.userID = userID;
       navigation.navigate("FilmListScreen", { userID: userID });
+    }else{
+        alert("Wrong username or password!")
     }
   }
 

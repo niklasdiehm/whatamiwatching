@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { View, Button, Image, TextInput, ToastAndroid, Platform, AlertIOS, Text } from "react-native";
+import { Alert, View, Button, Image, TextInput, ToastAndroid, Platform, AlertIOS, Text } from "react-native";
 import api from "../../services/api";
 import styles from "./styles";
 import { ContextTest } from "../../../App";
@@ -47,16 +47,9 @@ const ProfileScreen = (route) => {
   async function postChanges(newFavGenreID) {
     postResponse = await api2.updateFavoriteGenre(userID, newFavGenreID)
     if (postResponse) {
-      notifyMessage("Changes saved");
+      alert("Changes saved");
     } else {
-      notifyMessage("Changes could not be saved")
-    }
-    //reload seite
-  }
-
-  function notifyMessage(message) {
-    if (Platform.OS === 'android') {
-      ToastAndroid.show(message, ToastAndroid.SHORT)
+      alert("Changes could not be saved")
     }
   }
 
