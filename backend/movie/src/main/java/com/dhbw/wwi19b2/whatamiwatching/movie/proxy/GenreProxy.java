@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.dhbw.wwi19b2.whatamiwatching.movie.entity.GenreUser;
 
-@FeignClient(name = "BackendUserService", url = "http://genre:8083/", fallbackFactory = GenreProxyFallbackFactory.class)
+@FeignClient(name = "BackendUserService", url = "http://genre:80/", fallbackFactory = GenreProxyFallbackFactory.class)
 public interface GenreProxy {
 
 	@GetMapping(path = "/favorite?userID={userID}")
