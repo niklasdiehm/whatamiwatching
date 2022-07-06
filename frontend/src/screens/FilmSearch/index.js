@@ -6,7 +6,6 @@ import DropDownPicker from 'react-native-dropdown-picker';
 import api from "../../services/api";
 
 
-
 const MovieSearchScreen = (props) => {
 
   const api2 = new api();
@@ -33,18 +32,18 @@ const MovieSearchScreen = (props) => {
   }
 
   function onSearchClick(genreID, duration) {
-    if(genreID){
-        navigation.navigate("FilmSearchResultScreen", { genreID: genreID, duration: duration });
+    if (genreID) {
+      navigation.navigate("FilmSearchResultScreen", { genreID: genreID, duration: duration });
     }
-    else{
-        alert('Please select a genre!');
+    else {
+      alert('Please select a genre!');
     }
   }
 
   return (
     <View style={styles.container}>
       <View style={styles.inputs}>
-      <Text style={styles.label}>Genre</Text>
+        <Text style={styles.label}>Genre</Text>
         <DropDownPicker
           open={open}
           value={genreID}

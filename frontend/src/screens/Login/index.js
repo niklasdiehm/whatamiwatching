@@ -7,7 +7,7 @@ import api from "./../../services/api";
 import { ContextTest } from "../../../App";
 
 const LoginDisplay = (props) => {
-    LogBox.ignoreAllLogs();
+  LogBox.ignoreAllLogs();
 
   const [username, onChangeUsername] = useState('')
   const [password, onChangePassword] = useState('')
@@ -20,8 +20,8 @@ const LoginDisplay = (props) => {
     if (loginSucessful === true) {
       things.userID = userID;
       navigation.navigate("FilmListScreen", { userID: userID });
-    }else{
-        alert("Wrong username or password!")
+    } else {
+      alert("Wrong username or password!")
     }
   }
 

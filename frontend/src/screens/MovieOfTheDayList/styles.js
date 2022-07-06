@@ -1,4 +1,3 @@
-import { withTheme } from "@rneui/themed";
 import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({

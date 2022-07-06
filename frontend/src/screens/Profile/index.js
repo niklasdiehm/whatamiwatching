@@ -10,8 +10,6 @@ const ProfileScreen = (route) => {
   const things = useContext(ContextTest);
   const userID = things.userID;
   const api2 = new api();
-
-  //Dropdown
   const [open, setOpen] = useState(false);
   const [genreID, setGenreID] = useState(null);
   const [items, setItems] = useState([]);
@@ -56,22 +54,22 @@ const ProfileScreen = (route) => {
   return (
     <View style={styles.container}>
       <View style={styles.inputs}>
-          <Text style={styles.label}>Username</Text>
-          <TextInput style={styles.textInput} disabled={true}  showSoftInputOnFocus={false} value={favoriteGenre && favoriteGenre.user ? favoriteGenre.user.userName : "Loading..."} />
+        <Text style={styles.label}>Username</Text>
+        <TextInput style={styles.textInput} disabled={true} showSoftInputOnFocus={false} value={favoriteGenre && favoriteGenre.user ? favoriteGenre.user.userName : "Loading..."} />
 
-          <Text style={styles.label}>favorite genre</Text>
-          <DropDownPicker
-            style={styles.dropdown}
-            open={open}
-            value={genreID}
-            items={items}
-            setOpen={setOpen}
-            setValue={setGenreID}
-            setItems={setItems}
-          />
-          <View style={styles.buttonContainer}>
-            <Button title={"Save changes"} titleStyle={styles.buttonText} containerStyle={styles.button} onPress={() => postChanges(genreID)} />
-          </View>
+        <Text style={styles.label}>favorite genre</Text>
+        <DropDownPicker
+          style={styles.dropdown}
+          open={open}
+          value={genreID}
+          items={items}
+          setOpen={setOpen}
+          setValue={setGenreID}
+          setItems={setItems}
+        />
+        <View style={styles.buttonContainer}>
+          <Button title={"Save changes"} titleStyle={styles.buttonText} containerStyle={styles.button} onPress={() => postChanges(genreID)} />
+        </View>
       </View>
     </View>
   )

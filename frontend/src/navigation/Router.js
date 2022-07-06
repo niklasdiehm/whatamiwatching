@@ -1,16 +1,14 @@
-import React, { useContext } from "react";
+import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import LoginDisplay from "../screens/Login";
 import HomeTabNavigator from "./HomeTabNavigator.js";
 import FilmDetailsScreen from "../screens/FilmDetails";
 import FilmSearchResultScreen from "../screens/FilmSearchResult";
-import { ContextTest } from "../../App";
 
 const Stack = createStackNavigator();
 
 const Router = (props) => {
-  const things = useContext(ContextTest);
 
   return (
     <NavigationContainer>
@@ -36,8 +34,8 @@ const Router = (props) => {
           name={"FilmDetails"}
           component={FilmDetailsScreen}
           options={
-            ({ route }) => ({ title: route.params.title, headerBackTitle: "Back", headerTintColor: "white", headerStyle: { backgroundColor: "black"} })
-            }
+            ({ route }) => ({ title: route.params.title, headerBackTitle: "Back", headerTintColor: "white", headerStyle: { backgroundColor: "black" } })
+          }
         />
 
         <Stack.Screen

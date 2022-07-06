@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { View, Text, Image, FlatList, ScrollView } from "react-native";
 import styles from "./styles";
 import YoutubePlayer from 'react-native-youtube-iframe';
@@ -10,7 +10,6 @@ import api from "../../services/api";
 const FilmDetailsScreen = ({ route }) => {
   const { movieID } = route.params;
   const api2 = new api();
-
   const [movie, setMovie] = useState({});
 
   useEffect(() => {
@@ -24,6 +23,7 @@ const FilmDetailsScreen = ({ route }) => {
     movieResponse = await api2.getMovieByID(movieID);
     return movieResponse;
   }
+
   return (
     <ScrollView style={styles.container}>
       {movie && movie.video ?

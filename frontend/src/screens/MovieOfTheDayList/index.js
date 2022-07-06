@@ -10,9 +10,7 @@ const MovieOfTheDayListScreen = (route) => {
   const navigation = useNavigation();
   const userID = things.userID;
   const api2 = new api();
-
   const [movies, setMovies] = useState([]);
-
 
   useEffect(() => {
     async function getMovies() {
