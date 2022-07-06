@@ -70,15 +70,7 @@ export class api extends Component {
             return response.data;
         }
     }
-    /*
-    getMoviesByGenre(genreID) {
-        axios
-            .get(baseURL + "/movie/" + genreID)
-            .then((response) => {
-                return response;
-            })
-    }
-    */
+
     async getMoviesByGenreAndDuration(genreID, duration) {
         const response = await axios.get(this.url + "/movie/movies/discover?genreID=" + genreID + "&runtime=" + duration);
         if (response.status !== 200) {
