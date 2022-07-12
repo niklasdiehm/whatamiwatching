@@ -35,3 +35,7 @@ expo start
 ```
 
 Install the "Expo Go"-App on your smartphone and scan the upcoming QR-code in the terminal with the app.
+
+Logindata:
+user: Affenkopf
+password: password
